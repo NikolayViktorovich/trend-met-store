@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import videoBackground from '../assets/aa2.mp4'
+
+const videoBackground = 'https://res.cloudinary.com/daroh5iro/video/upload/v1770571896/%D0%B0%D0%B02_rup6ot.mp4'
 
 const useCounter = (end, duration = 600) => {
   const [count, setCount] = useState(0)
