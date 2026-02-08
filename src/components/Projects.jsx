@@ -5,25 +5,25 @@ const projects = [
   {
     title: 'Национальный аэропорт Минск',
     images: [
-      'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800',
-      'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=800',
-      'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800'
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 1%3C/text%3E%3C/svg%3E',
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 1%3C/text%3E%3C/svg%3E',
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 1%3C/text%3E%3C/svg%3E'
     ]
   },
   {
     title: 'Национальная библиотека, г. Минск',
     images: [
-      'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800',
-      'https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800',
-      'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800'
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 2%3C/text%3E%3C/svg%3E',
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 2%3C/text%3E%3C/svg%3E',
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 2%3C/text%3E%3C/svg%3E'
     ]
   },
   {
     title: 'Бизнес-центр Kiroff',
     images: [
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800',
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800',
-      'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800'
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 3%3C/text%3E%3C/svg%3E',
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 3%3C/text%3E%3C/svg%3E',
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 3%3C/text%3E%3C/svg%3E'
     ]
   }
 ]
