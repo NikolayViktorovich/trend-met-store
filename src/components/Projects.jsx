@@ -58,6 +58,7 @@ const ProjectCard = ({ project, index }) => {
         <img 
           src={project.images[activeImg]} 
           alt={project.title}
+          loading="lazy"
           className="w-full h-full object-cover transition-opacity duration-300"
         />
         

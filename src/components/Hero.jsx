@@ -47,7 +47,15 @@ const Hero = () => {
 
   return (
     <section className="relative h-[600px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-      <video autoPlay loop muted playsInline className={`absolute inset-0 w-full h-full object-cover opacity-40 transition-all duration-500 ${isLoaded ? 'scale-100' : 'scale-110'}`}>
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        preload="metadata"
+        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%231f2937' width='1920' height='1080'/%3E%3C/svg%3E"
+        className={`absolute inset-0 w-full h-full object-cover opacity-40 transition-all duration-500 ${isLoaded ? 'scale-100' : 'scale-110'}`}
+      >
         <source src={videoBackground} type="video/mp4" />
       </video>
 

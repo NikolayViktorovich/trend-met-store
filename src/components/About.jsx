@@ -16,7 +16,7 @@ const About = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <img src="/src/assets/fGroup_129.svg" alt="ТрендМет" className="h-16 grayscale mb-8" />
+          <img src="/logo.svg" alt="ТрендМет" className="h-16 grayscale mb-8" />
           <h2 className="text-3xl font-bold mb-6 text-gray-900">О компании</h2>
           <p className="text-xl font-bold text-gray-900 mb-6">Ведущая компания на рынке российского металлопроката</p>
           <p className="text-gray-600 leading-relaxed mb-6">

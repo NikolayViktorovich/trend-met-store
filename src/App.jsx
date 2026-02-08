@@ -27,7 +27,9 @@ const App = () => {
       tablet: {
         smooth: true,
         multiplier: 1.5
-      }
+      },
+      reloadOnContextChange: true,
+      resetNativeScroll: true
     })
 
     return () => {

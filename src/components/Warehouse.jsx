@@ -45,7 +45,7 @@ const Warehouse = () => (
         <div className="grid grid-cols-2 gap-3">
           {images.map((img, i) => (
             <div key={i} className="overflow-hidden rounded-xl aspect-video border border-gray-700">
-              <img src={img} alt="" className="w-full h-full object-cover" />
+              <img src={img} alt="" loading="lazy" className="w-full h-full object-cover" />
             </div>
           ))}
         </div>

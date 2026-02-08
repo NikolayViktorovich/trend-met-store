@@ -11,7 +11,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="col-span-1 md:col-span-2">
-          <img src="/src/assets/fGroup_129.svg" alt="ТрендМет" className="h-12 mb-6 brightness-0 invert" />
+          <img src="/logo.svg" alt="ТрендМет" className="h-12 mb-6 brightness-0 invert" />
           <div className="space-y-2">
             <a href="tel:+79199995409" className="block text-lg font-semibold hover:text-gray-300 transition-colors">8 (919) 999 54 09</a>
             <a href="mailto:maryland@inbox.ru" className="block text-sm text-gray-400 hover:text-gray-300 transition-colors">maryland@inbox.ru</a>

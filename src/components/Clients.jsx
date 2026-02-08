@@ -56,6 +56,7 @@ const Clients = () => {
               <img 
                 src={client.logo} 
                 alt="" 
+                loading="lazy"
                 className={`max-w-full h-auto object-contain opacity-60 hover:opacity-100 transition-opacity ${
                   client.size === 'xxlarge' ? 'max-h-44' : client.size === 'xlarge' ? 'max-h-36' : client.size === 'large' ? 'max-h-20' : 'max-h-14'
                 }`} 
