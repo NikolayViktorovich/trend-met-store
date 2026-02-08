@@ -34,6 +34,8 @@ const icons = [
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false)
   const [count35, startCount35] = useCounter(35)
   const [count1000, startCount1000] = useCounter(1000)
 
@@ -43,21 +45,29 @@ const Hero = () => {
       startCount35()
       startCount1000()
     }, 500)
+    
+    setTimeout(() => {
+      setShouldLoadVideo(true)
+    }, 1000)
   }, [])
 
   return (
     <section className="relative h-[600px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-      <video 
-        autoPlay 
-        loop 
-        muted 
-        playsInline 
-        preload="metadata"
-        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%231f2937' width='1920' height='1080'/%3E%3C/svg%3E"
-        className={`absolute inset-0 w-full h-full object-cover opacity-40 transition-all duration-500 ${isLoaded ? 'scale-100' : 'scale-110'}`}
-      >
-        <source src={videoBackground} type="video/mp4" />
-      </video>
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
+      
+      {shouldLoadVideo && (
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          preload="auto"
+          onLoadedData={() => setVideoLoaded(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${isLoaded ? 'scale-100' : 'scale-110'} ${videoLoaded ? 'opacity-40' : 'opacity-0'}`}
+        >
+          <source src={videoBackground} type="video/mp4" />
+        </video>
+      )}
 
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
       
