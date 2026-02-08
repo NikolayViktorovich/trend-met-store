@@ -42,14 +42,11 @@ const Hero = () => {
 
   useEffect(() => {
     setIsLoaded(true)
+    setShouldLoadVideo(true)
     setTimeout(() => {
       startCount35()
       startCount1000()
     }, 500)
-    
-    setTimeout(() => {
-      setShouldLoadVideo(true)
-    }, 1000)
   }, [])
 
   return (
