@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import videoBackground from '../assets/aa2.mp4'
+// import videoBackground from '../assets/aa2.mp4'
 
 const useCounter = (end, duration = 600) => {
   const [count, setCount] = useState(0)
@@ -53,9 +53,13 @@ const Hero = () => {
 
   return (
     <section className="relative h-[600px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+      </div>
       
-      {shouldLoadVideo && (
+      {/* {shouldLoadVideo && (
         <video 
           autoPlay 
           loop 
@@ -67,7 +71,7 @@ const Hero = () => {
         >
           <source src={videoBackground} type="video/mp4" />
         </video>
-      )}
+      )} */}
 
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
       
