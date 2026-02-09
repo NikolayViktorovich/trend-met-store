@@ -1,14 +1,23 @@
+import gost23118 from '../assets/Documents/gost-23118-2012.jpg'
+import stb2174 from '../assets/Documents/stb-2174-2011.jpg'
+import stb1396 from '../assets/Documents/stb-1396-2003.jpg'
+import sertifikat from '../assets/Documents/sertifikat-na-izd-armaturnye-stb-2174_04.jpg'
+import svarka from '../assets/Documents/svarka.jpg'
+import iso from '../assets/Documents/ISO.jpg'
+import isoNac from '../assets/Documents/ISO-nac.jpg'
+import ctk from '../assets/Documents/ctk.jpg'
+
 const documents = [
-  { code: 'ГОСТ 23118-2012', title: '«Конструкции стальные строительные»', link: true },
-  { code: 'СТБ 2174-2011', title: '«Изделия арматурные сварные для железобетонных конструкций»', link: true },
-  { code: 'СТБ 1396-2003', title: '«Фермы стропильные стальные для производственных зданий»', link: true },
+  { code: 'ГОСТ 23118-2012', title: '«Конструкции стальные строительные»', link: gost23118 },
+  { code: 'СТБ 2174-2011', title: '«Изделия арматурные сварные для железобетонных конструкций»', link: stb2174 },
+  { code: 'СТБ 1396-2003', title: '«Фермы стропильные стальные для производственных зданий»', link: stb1396 },
   { code: 'ТУ BY 631597467.001-2015', title: '«Фонари зенитные»' },
   { code: 'ТУ BY 691799580.006-2019', title: '«Балки двутавровые сварные»' },
-  { title: 'Сертификат продукции собственного производства', link: true },
-  { title: 'Свидетельство на сварочное производство', link: true },
-  { title: 'Сертификат ISO', link: true },
-  { title: 'Сертификат ISO-nac', link: true },
-  { title: 'Свидетельство о технической компетентности', link: true }
+  { title: 'Сертификат продукции собственного производства', link: sertifikat },
+  { title: 'Свидетельство на сварочное производство', link: svarka },
+  { title: 'Сертификат ISO', link: iso },
+  { title: 'Сертификат ISO-nac', link: isoNac },
+  { title: 'Свидетельство о технической компетентности', link: ctk }
 ]
 
 const About = () => (
@@ -35,7 +44,7 @@ const About = () => (
                 <div className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-1.5 sm:mt-2 flex-shrink-0" />
                 <span className="text-gray-600 text-xs sm:text-sm">
                   {doc.code && <span className="font-bold">{doc.code}</span>} {doc.title}
-                  {doc.link && <a href="#" className="text-blue-600 hover:underline ml-1">скачать</a>}
+                  {doc.link && <a href={doc.link} download target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline ml-1">скачать</a>}
                 </span>
               </li>
             ))}
