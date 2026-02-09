@@ -5,7 +5,7 @@ const CatalogMenu = ({ isDark = false }) => {
   const hoverClass = isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-50'
 
   return (
-    <div className={`absolute ${isDark ? 'bottom-full mb-2' : 'top-full mt-2'} left-0 w-64 ${bgClass} border ${borderClass} rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50`}>
+    <div className={`absolute ${isDark ? 'bottom-full mb-2' : 'top-full mt-2'} left-0 lg:left-0 w-64 ${bgClass} border ${borderClass} rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50`}>
       <div className="relative group/sub">
         <button className={`w-full text-left px-4 py-2.5 ${textClass} ${hoverClass} transition-colors flex items-center justify-between text-sm first:rounded-t`}>
           Сталь нержавеющая
@@ -13,7 +13,7 @@ const CatalogMenu = ({ isDark = false }) => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
           </svg>
         </button>
-        <div className={`absolute ${isDark ? 'left-full bottom-0' : 'left-full top-0'} ml-1 w-56 ${bgClass} border ${borderClass} rounded shadow-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all`}>
+        <div className={`absolute left-full top-0 ml-1 w-56 ${bgClass} border ${borderClass} rounded shadow-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all`}>
           <a href="#steel-rolls" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm first:rounded-t`}>
             Нержавеющие рулоны
           </a>
