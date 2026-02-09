@@ -22,18 +22,18 @@ const Services = () => {
   const isInView = useInView(ref, { margin: "-100px" })
 
   return (
-    <section id="services" className="py-20 bg-white" ref={ref}>
+    <section id="services" className="py-12 sm:py-16 md:py-20 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-gray-900 mb-10"
+          className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-10"
         >
           Услуги
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
           {services.map((s, i) => (
             <motion.div 
               key={i}
@@ -44,8 +44,8 @@ const Services = () => {
             >
               <img src={s.img} alt={s.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="text-white text-lg font-semibold leading-snug">{s.title}</h3>
+              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6">
+                <h3 className="text-white text-sm sm:text-lg font-semibold leading-snug">{s.title}</h3>
               </div>
             </motion.div>
           ))}

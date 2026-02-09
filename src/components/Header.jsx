@@ -65,7 +65,7 @@ const Header = () => {
             ))}
 
             <div className="relative group">
-              <button className="text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1 text-sm">
+              <button className="text-gray-900 hover:text-gray-700 transition-colors flex items-center gap-1 text-sm">
                 Краны
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
@@ -73,13 +73,13 @@ const Header = () => {
               </button>
               <div className="absolute top-full mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                 {craneLinks.map((link, i) => (
-                  <a key={link.href} href={link.href} className={`block px-4 py-2.5 text-gray-700 hover:bg-gray-50 transition-colors text-sm ${i === 0 ? 'rounded-t' : 'rounded-b'}`}>{link.label}</a>
+                  <a key={link.href} href={link.href} className={`block px-4 py-2.5 text-gray-900 hover:bg-gray-50 transition-colors text-sm ${i === 0 ? 'rounded-t' : 'rounded-b'}`}>{link.label}</a>
                 ))}
               </div>
             </div>
 
             <div className="relative group">
-              <button className="text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1 text-sm">
+              <button className="text-gray-900 hover:text-gray-700 transition-colors flex items-center gap-1 text-sm">
                 Каталог
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
@@ -113,7 +113,7 @@ const Header = () => {
               <div className="border-t border-gray-100">
                 <button 
                   onClick={() => setIsCranesOpen(!isCranesOpen)}
-                  className="w-full flex items-center justify-between py-3 text-gray-500 hover:text-gray-700 transition-colors text-sm"
+                  className="w-full flex items-center justify-between py-3 text-gray-900 hover:text-gray-700 transition-colors text-sm"
                 >
                   Краны
                   <svg className={`w-4 h-4 transition-transform ${isCranesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ const Header = () => {
                 {isCranesOpen && (
                   <div className="pl-4 space-y-2">
                     {craneLinks.map(link => (
-                      <a key={link.href} href={link.href} onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">{link.label}</a>
+                      <a key={link.href} href={link.href} onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">{link.label}</a>
                     ))}
                   </div>
                 )}
@@ -132,7 +132,7 @@ const Header = () => {
               <div className="border-t border-gray-100">
                 <button 
                   onClick={() => setIsCatalogOpen(!isCatalogOpen)}
-                  className="w-full flex items-center justify-between py-3 text-gray-500 hover:text-gray-700 transition-colors text-sm"
+                  className="w-full flex items-center justify-between py-3 text-gray-900 hover:text-gray-700 transition-colors text-sm"
                 >
                   Каталог
                   <svg className={`w-4 h-4 transition-transform ${isCatalogOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,20 +141,21 @@ const Header = () => {
                 </button>
                 {isCatalogOpen && (
                   <div className="pl-4 space-y-2">
-                    <a href="#steel" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Сталь нержавеющая</a>
-                    <a href="#catalog-decorative" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Сталь декоративная</a>
-                    <a href="#catalog-painted" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Окрашенная сталь</a>
-                    <a href="#catalog-galvanized" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Сталь оцинкованная</a>
-                    <a href="#catalog-roofing" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Кровля</a>
+                    <a href="#steel" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь нержавеющая</a>
+                    <a href="#catalog-decorative" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь декоративная</a>
+                    <a href="#catalog-painted" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Окрашенная сталь</a>
+                    <a href="#catalog-galvanized" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь оцинкованная</a>
+                    <a href="#catalog-roofing" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Кровля</a>
                   </div>
                 )}
               </div>
 
-              <div className="border-t border-gray-100">
-                <a href="#furniture" onClick={closeMobileMenu} className="flex items-center py-3 text-gray-700 hover:text-gray-900 transition-colors text-sm">Мет. мебель</a>
+              <div className="border-t border-gray-100"></div>
+              <div>
+                <a href="#furniture" onClick={closeMobileMenu} className="block py-3 text-gray-700 hover:text-gray-900 transition-colors text-sm">Мет. мебель</a>
               </div>
 
-              <div className="md:hidden mt-4 pt-4 border-t border-gray-100 space-y-2">
+              <div className="md:hidden border-t border-gray-100 pt-4 space-y-2">
                 <a href="tel:+79199995409" className="block text-sm font-semibold text-gray-900">+7 (919) 999-54-09</a>
                 <a href="mailto:zakaz@trend-met.ru" className="block text-xs text-gray-500">zakaz@trend-met.ru</a>
               </div>

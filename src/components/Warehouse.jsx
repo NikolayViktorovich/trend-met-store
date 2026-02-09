@@ -20,21 +20,21 @@ const orbs = [
 ]
 
 const Warehouse = () => (
-  <section id="catalog" className="py-20 bg-gray-900 relative overflow-hidden">
+  <section id="catalog" className="py-12 sm:py-16 md:py-20 bg-gray-900 relative overflow-hidden">
     {orbs.map((orb, i) => (
       <div key={i} className={`absolute ${orb.size} ${orb.pos} rounded-full blur-3xl glow-orb`} style={{ backgroundColor: orb.color, animationDelay: orb.delay }} />
     ))}
     
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <h2 className="text-3xl font-bold text-white mb-10">Склад</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-10">Склад</h2>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-3">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div className="space-y-2 sm:space-y-3">
           {items.map((item, i) => (
-            <div key={i} className="bg-gray-800/50 backdrop-blur-sm p-5 rounded-xl hover:bg-gray-800/80 transition-all cursor-pointer group">
-              <span className="text-white font-medium flex items-center justify-between">
+            <div key={i} className="bg-gray-800/50 backdrop-blur-sm p-3 sm:p-5 rounded-xl hover:bg-gray-800/80 transition-all cursor-pointer group">
+              <span className="text-white text-sm sm:text-base font-medium flex items-center justify-between">
                 {item}
-                <svg className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
                 </svg>
               </span>
@@ -42,9 +42,9 @@ const Warehouse = () => (
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2 sm:gap-3">
           {images.map((img, i) => (
-            <div key={i} className="overflow-hidden rounded-xl aspect-video border border-gray-700">
+            <div key={i} className="overflow-hidden rounded-lg sm:rounded-xl aspect-video border border-gray-700">
               <img src={img} alt="" loading="lazy" className="w-full h-full object-cover" />
             </div>
           ))}

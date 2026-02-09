@@ -1,7 +1,7 @@
 const CatalogMenu = ({ isDark = false }) => {
   const bgClass = isDark ? 'bg-gray-900' : 'bg-white'
   const borderClass = isDark ? 'border-gray-800' : 'border-gray-200'
-  const textClass = isDark ? 'text-gray-300' : 'text-gray-700'
+  const textClass = isDark ? 'text-gray-300' : 'text-gray-900'
   const hoverClass = isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-50'
 
   return (

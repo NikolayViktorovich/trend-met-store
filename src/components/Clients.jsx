@@ -34,17 +34,17 @@ const Clients = () => {
   const isInView = useInView(ref, { margin: "-100px" })
 
   return (
-    <section className="py-20 bg-gray-50" ref={ref}>
+    <section className="py-12 sm:py-16 md:py-20 bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-gray-900 mb-10"
+          className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-10"
         >
           Наши клиенты
         </motion.h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {clients.map((client, i) => (
             <motion.div 
               key={i}
@@ -58,7 +58,10 @@ const Clients = () => {
                 alt="" 
                 loading="lazy"
                 className={`max-w-full h-auto object-contain opacity-60 hover:opacity-100 transition-opacity ${
-                  client.size === 'xxlarge' ? 'max-h-44' : client.size === 'xlarge' ? 'max-h-36' : client.size === 'large' ? 'max-h-20' : 'max-h-14'
+                  client.size === 'xxlarge' ? 'max-h-24 sm:max-h-36 md:max-h-44' : 
+                  client.size === 'xlarge' ? 'max-h-20 sm:max-h-28 md:max-h-36' : 
+                  client.size === 'large' ? 'max-h-12 sm:max-h-16 md:max-h-20' : 
+                  'max-h-8 sm:max-h-12 md:max-h-14'
                 }`} 
               />
             </motion.div>

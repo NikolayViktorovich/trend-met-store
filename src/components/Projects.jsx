@@ -68,18 +68,18 @@ const ProjectCard = ({ project, index }) => {
           <>
             <button 
               onClick={() => navigate('prev')}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10"
+              className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10"
             >
-              <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/>
               </svg>
             </button>
 
             <button 
               onClick={() => navigate('next')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10"
+              className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10"
             >
-              <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
               </svg>
             </button>
@@ -100,7 +100,7 @@ const ProjectCard = ({ project, index }) => {
           initial={{ y: 20, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
-          className="absolute bottom-0 left-0 right-0 p-6"
+          className="absolute bottom-0 left-0 right-0 p-3 sm:p-6"
         >
           <div className="relative">
             <motion.div 
@@ -109,7 +109,7 @@ const ProjectCard = ({ project, index }) => {
               transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
               className="absolute -left-2 top-0 bottom-0 w-1 bg-[#0062dd] origin-left"
             />
-            <h3 className="text-white text-xl font-bold pl-4">{project.title}</h3>
+            <h3 className="text-white text-base sm:text-xl font-bold pl-3 sm:pl-4">{project.title}</h3>
           </div>
         </motion.div>
       </div>
@@ -122,7 +122,7 @@ const Projects = () => {
   const isInView = useInView(ref, { margin: "-100px" })
 
   return (
-    <section id="projects" className="py-20 bg-gray-900 relative overflow-hidden" ref={ref}>
+    <section id="projects" className="py-12 sm:py-16 md:py-20 bg-gray-900 relative overflow-hidden" ref={ref}>
       {orbs.map((orb, i) => (
         <div key={i} className={`absolute ${orb.size} ${orb.pos} bg-${orb.color} rounded-full blur-3xl glow-orb`} style={{ animationDelay: orb.delay }} />
       ))}
@@ -132,12 +132,12 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-white mb-10"
+          className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-10"
         >
           Наши проекты
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {projects.map((project, i) => (
             <ProjectCard key={i} project={project} index={i} />
           ))}

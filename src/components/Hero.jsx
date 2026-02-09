@@ -50,7 +50,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className="relative h-[450px] sm:h-[500px] md:h-[600px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <section className="relative h-[500px] sm:h-[550px] md:h-[600px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
       
       {shouldLoadVideo && (
@@ -75,7 +75,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
           >
             Производство<br />металлоконструкций<br /><span className="text-[#0062dd]">полного цикла</span>
           </motion.h1>
