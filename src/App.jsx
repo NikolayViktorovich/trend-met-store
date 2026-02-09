@@ -38,7 +38,7 @@ const App = () => {
   }, [])
 
   return (
-    <div ref={scrollRef} data-scroll-container className="min-h-screen bg-white">
+    <div ref={scrollRef} data-scroll-container className="min-h-screen bg-white overflow-x-hidden w-full max-w-full">
       <Header />
       <Hero />
       <Stats />

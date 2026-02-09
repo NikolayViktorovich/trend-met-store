@@ -50,7 +50,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className="relative h-[600px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <section className="relative h-[450px] sm:h-[500px] md:h-[600px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
       
       {shouldLoadVideo && (
@@ -75,39 +75,39 @@ const Hero = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-4xl md:text-6xl font-bold text-white"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
           >
             Производство<br />металлоконструкций<br /><span className="text-[#0062dd]">полного цикла</span>
           </motion.h1>
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 right-0 pb-8">
+      <div className="absolute bottom-0 left-0 right-0 pb-3 sm:pb-6 md:pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 md:gap-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-center backdrop-blur-sm bg-black/20 rounded-lg py-4 px-3"
+              className="text-center backdrop-blur-sm bg-black/20 rounded-lg py-2 sm:py-4 px-1.5 sm:px-3"
             >
-              <div className="h-16 flex items-center justify-center mb-2">
-                <div className="text-5xl font-bold text-white">{count35}</div>
+              <div className="h-8 sm:h-14 md:h-16 flex items-center justify-center mb-0.5 sm:mb-2">
+                <div className="text-xl sm:text-4xl md:text-5xl font-bold text-white">{count35}</div>
               </div>
-              <div className="text-xs text-gray-200">лет на рынке</div>
+              <div className="text-[8px] sm:text-xs text-gray-200 leading-tight">лет на рынке</div>
             </motion.div>
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="text-center backdrop-blur-sm bg-black/20 rounded-lg py-4 px-3"
+              className="text-center backdrop-blur-sm bg-black/20 rounded-lg py-2 sm:py-4 px-1.5 sm:px-3"
             >
-              <div className="h-16 flex items-center justify-center mb-2">
-                <div className="text-5xl font-bold text-white">{count1000}</div>
+              <div className="h-8 sm:h-14 md:h-16 flex items-center justify-center mb-0.5 sm:mb-2">
+                <div className="text-xl sm:text-4xl md:text-5xl font-bold text-white">{count1000}</div>
               </div>
-              <div className="text-xs text-gray-200">тонн в месяц —</div>
-              <div className="text-xs text-gray-200">объём производства</div>
+              <div className="text-[8px] sm:text-xs text-gray-200 leading-tight">тонн в месяц —</div>
+              <div className="text-[8px] sm:text-xs text-gray-200 leading-tight">объём производства</div>
             </motion.div>
             
             {icons.map((icon, i) => (
@@ -116,14 +116,14 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: icon.delay }}
-                className="text-center backdrop-blur-sm bg-black/20 rounded-lg py-4 px-3"
+                className="text-center backdrop-blur-sm bg-black/20 rounded-lg py-2 sm:py-4 px-1.5 sm:px-3"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 mb-2">
-                  <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="inline-flex items-center justify-center h-8 sm:h-14 md:h-16 mb-0.5 sm:mb-2">
+                  <svg className="w-8 h-8 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={icon.path}/>
                   </svg>
                 </div>
-                {icon.label.map((l, j) => <div key={j} className="text-xs text-gray-200">{l}</div>)}
+                {icon.label.map((l, j) => <div key={j} className="text-[8px] sm:text-xs text-gray-200 leading-tight">{l}</div>)}
               </motion.div>
             ))}
           </div>

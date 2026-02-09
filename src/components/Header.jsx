@@ -14,31 +14,61 @@ const craneLinks = [
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isCatalogOpen, setIsCatalogOpen] = useState(false)
+  const [isCranesOpen, setIsCranesOpen] = useState(false)
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+    setIsCatalogOpen(false)
+    setIsCranesOpen(false)
+  }
 
   return (
     <>
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3 border-b border-gray-100">
-            <img src="/logo.svg" alt="ТрендМет" className="h-12" />
+            {/* Логотип */}
+            <img src="/logo.svg" alt="ТрендМет" className="h-10" />
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
+              {/* Контакты - скрыты на мобильных */}
               <div className="hidden md:flex flex-col items-end">
                 <a href="tel:+79199995409" className="text-sm font-semibold text-gray-900 hover:text-gray-600 transition-colors">+7 (919) 999-54-09</a>
                 <a href="mailto:zakaz@trend-met.ru" className="text-xs text-gray-500 hover:text-gray-700 transition-colors">zakaz@trend-met.ru</a>
               </div>
 
-              <button onClick={() => setIsModalOpen(true)} className="bg-[#0062dd] text-white px-6 py-2.5 rounded-full hover:bg-[#0052bb] transition-colors font-medium text-sm">
+              {/* Кнопка заявки - только на десктопе */}
+              <button 
+                onClick={() => setIsModalOpen(true)} 
+                className="hidden lg:inline-flex bg-[#0062dd] text-white px-6 py-2.5 rounded-full hover:bg-[#0052bb] transition-colors font-medium text-sm whitespace-nowrap items-center justify-center"
+              >
                 Оставить заявку
+              </button>
+
+              {/* Бургер меню - только на мобильных */}
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 text-gray-700 hover:text-gray-900 flex items-center justify-center"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {isMobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16"/>
+                  )}
+                </svg>
               </button>
             </div>
           </div>
 
+          {/* Десктопное меню */}
           <nav className="hidden lg:flex items-center justify-center gap-8 py-3">
             {navLinks.map(link => (
               <a key={link.href} href={link.href} className="text-gray-700 hover:text-gray-900 transition-colors text-sm">{link.label}</a>
             ))}
-            
+
             <div className="relative group">
               <button className="text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 text-sm">
                 Краны
@@ -52,7 +82,7 @@ const Header = () => {
                 ))}
               </div>
             </div>
-            
+
             <div className="relative group">
               <button className="text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 text-sm">
                 Каталог
@@ -62,12 +92,80 @@ const Header = () => {
               </button>
               <CatalogMenu />
             </div>
-            
+
             <a href="#furniture" className="text-gray-700 hover:text-gray-900 transition-colors text-sm">Мет. мебель</a>
           </nav>
+
+          {/* Мобильное меню */}
+          {isMobileMenuOpen && (
+            <nav className="lg:hidden py-4 border-t border-gray-100 animate-slide-in">
+              {/* Кнопка заявки в мобильном меню */}
+              <button 
+                onClick={() => {
+                  setIsModalOpen(true)
+                  closeMobileMenu()
+                }} 
+                className="w-full bg-[#0062dd] text-white py-3 rounded-full hover:bg-[#0052bb] transition-colors font-medium text-sm mb-4"
+              >
+                Оставить заявку
+              </button>
+
+              {navLinks.map(link => (
+                <a key={link.href} href={link.href} onClick={closeMobileMenu} className="block py-3 text-gray-700 hover:text-gray-900 transition-colors text-sm">{link.label}</a>
+              ))}
+
+              <div className="border-t border-gray-100 mt-2 pt-2">
+                <button 
+                  onClick={() => setIsCranesOpen(!isCranesOpen)}
+                  className="w-full flex items-center justify-between py-3 text-gray-700 hover:text-gray-900 transition-colors text-sm"
+                >
+                  Краны
+                  <svg className={`w-4 h-4 transition-transform ${isCranesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </button>
+                {isCranesOpen && (
+                  <div className="pl-4 space-y-2">
+                    {craneLinks.map(link => (
+                      <a key={link.href} href={link.href} onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">{link.label}</a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="border-t border-gray-100 mt-2 pt-2">
+                <button 
+                  onClick={() => setIsCatalogOpen(!isCatalogOpen)}
+                  className="w-full flex items-center justify-between py-3 text-gray-700 hover:text-gray-900 transition-colors text-sm"
+                >
+                  Каталог
+                  <svg className={`w-4 h-4 transition-transform ${isCatalogOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </button>
+                {isCatalogOpen && (
+                  <div className="pl-4 space-y-2">
+                    <a href="#steel" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Сталь нержавеющая</a>
+                    <a href="#catalog-decorative" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Сталь декоративная</a>
+                    <a href="#catalog-painted" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Окрашенная сталь</a>
+                    <a href="#catalog-galvanized" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Сталь оцинкованная</a>
+                    <a href="#catalog-roofing" onClick={closeMobileMenu} className="block py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm">Кровля</a>
+                  </div>
+                )}
+              </div>
+
+              <a href="#furniture" onClick={closeMobileMenu} className="block py-3 text-gray-700 hover:text-gray-900 transition-colors text-sm border-t border-gray-100 mt-2 pt-2">Мет. мебель</a>
+
+              {/* Контакты в мобильном меню */}
+              <div className="mt-4 pt-4 border-t border-gray-100 space-y-2">
+                <a href="tel:+79199995409" className="block text-sm font-semibold text-gray-900">+7 (919) 999-54-09</a>
+                <a href="mailto:zakaz@trend-met.ru" className="block text-xs text-gray-500">zakaz@trend-met.ru</a>
+              </div>
+            </nav>
+          )}
         </div>
       </header>
-      
+
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   )
