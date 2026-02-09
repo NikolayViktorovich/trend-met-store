@@ -41,7 +41,7 @@ const About = () => (
           <ul className="space-y-2 sm:space-y-3">
             {documents.map((doc, i) => (
               <li key={i} className="flex items-start gap-2 sm:gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-1.5 sm:mt-2 flex-shrink-0" />
+                <div className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-1.5 sm:mt-2 shrink-0" />
                 <span className="text-gray-600 text-xs sm:text-sm">
                   {doc.code && <span className="font-bold">{doc.code}</span>} {doc.title}
                   {doc.link && <a href={doc.link} download target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline ml-1">скачать</a>}

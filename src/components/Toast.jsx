@@ -17,8 +17,8 @@ const Toast = ({ message, type = 'success', onClose }) => {
   }, [onClose])
 
   return (
-    <div className="fixed top-4 right-4 z-[100] animate-slide-in">
-      <div className="bg-white rounded-xl shadow-2xl p-4 flex items-center gap-3 min-w-[300px] border border-gray-200">
+    <div className="fixed top-4 right-4 z-100 animate-slide-in">
+      <div className="bg-white rounded-xl shadow-2xl p-4 flex items-center gap-3 min-w-75 border border-gray-200">
         <svg className={`w-6 h-6 ${colors[type]}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={icons[type]}/>
         </svg>

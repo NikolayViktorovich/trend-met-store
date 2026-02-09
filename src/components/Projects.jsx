@@ -54,7 +54,7 @@ const ProjectCard = ({ project, index }) => {
       transition={{ duration: 0.6, delay: index * 0.2 }}
       className="group relative rounded-2xl overflow-hidden"
     >
-      <div className="relative aspect-[16/11]">
+      <div className="relative aspect-16/11">
         <img 
           src={project.images[activeImg]} 
           alt={project.title}
@@ -62,7 +62,7 @@ const ProjectCard = ({ project, index }) => {
           className="w-full h-full object-cover transition-opacity duration-300"
         />
         
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
         
         {project.images.length > 1 && (
           <>

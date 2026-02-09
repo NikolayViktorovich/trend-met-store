@@ -40,10 +40,10 @@ const Services = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/3]"
+              className="group relative overflow-hidden rounded-2xl aspect-4/3"
             >
               <img src={s.img} alt={s.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6">
                 <h3 className="text-white text-sm sm:text-lg font-semibold leading-snug">{s.title}</h3>
               </div>

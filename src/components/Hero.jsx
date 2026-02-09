@@ -22,12 +22,6 @@ const useCounter = (end, duration = 600) => {
 
   return [count, () => setHasStarted(true)]
 }
-
-const stats = [
-  { value: 35, label: 'лет на рынке', delay: 0.1 },
-  { value: 1000, label: ['тонн в месяц —', 'объём производства'], delay: 0.2 },
-]
-
 const icons = [
   { path: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', label: ['выполнение', 'работы в срок'], delay: 0.3 },
   { path: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', label: ['работа с крупнейшими', 'подрядчиками'], delay: 0.4 }
@@ -50,8 +44,8 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className="relative h-[500px] sm:h-[550px] md:h-[600px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
+    <section className="relative h-125 sm:h-137.5 md:h-150 bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+      <div className="absolute inset-0 bg-linear-to-br from-gray-900 via-gray-800 to-gray-900" />
       
       {shouldLoadVideo && (
         <video 
@@ -67,7 +61,7 @@ const Hero = () => {
         </video>
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-gray-900/80 to-transparent" />
       
       <div className="absolute inset-0 flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
