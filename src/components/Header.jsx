@@ -61,11 +61,11 @@ const Header = () => {
 
           <nav className="hidden lg:flex items-center justify-center gap-8 py-3">
             {navLinks.map(link => (
-              <a key={link.href} href={link.href} className="text-gray-700 hover:text-gray-900 transition-colors text-sm">{link.label}</a>
+              <a key={link.href} href={link.href} className="text-gray-900 hover:text-gray-700 transition-colors text-sm">{link.label}</a>
             ))}
 
             <div className="relative group">
-              <button className="text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 text-sm">
+              <button className="text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1 text-sm">
                 Краны
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
@@ -79,7 +79,7 @@ const Header = () => {
             </div>
 
             <div className="relative group">
-              <button className="text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1 text-sm">
+              <button className="text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1 text-sm">
                 Каталог
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
@@ -88,7 +88,7 @@ const Header = () => {
               <CatalogMenu />
             </div>
 
-            <a href="#furniture" className="text-gray-700 hover:text-gray-900 transition-colors text-sm">Мет. мебель</a>
+            <a href="#furniture" className="text-gray-900 hover:text-gray-700 transition-colors text-sm">Мет. мебель</a>
           </nav>
 
           {isMobileMenuOpen && (
