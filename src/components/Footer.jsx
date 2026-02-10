@@ -46,7 +46,13 @@ const Footer = () => {
               {navItems.map(item => (
                 <li key={item.href}>
                   {item.isRoute ? (
-                    <Link to={item.href} className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">{item.label}</Link>
+                    <Link 
+                      to={item.href} 
+                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                      className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
+                    >
+                      {item.label}
+                    </Link>
                   ) : (
                     <a href={item.href} className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">{item.label}</a>
                   )}
