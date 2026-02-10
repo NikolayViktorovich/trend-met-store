@@ -1,30 +1,78 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
+import minsk1 from '../assets/Projects/Minsk/1.jpg'
+import minsk2 from '../assets/Projects/Minsk/2.jpg'
+import parkMinsk1 from '../assets/Projects/park_minsk/1.jpg'
+import parkMinsk2 from '../assets/Projects/park_minsk/2.jpg'
+import biznes1 from '../assets/Projects/biznes_centre/1.jpg'
+import biznes2 from '../assets/Projects/biznes_centre/2.jpg'
+import biznes3 from '../assets/Projects/biznes_centre/3.jpg'
+import biznes4 from '../assets/Projects/biznes_centre/4.jpg'
+import biznes5 from '../assets/Projects/biznes_centre/5.jpg'
+import sanatoriy1 from '../assets/Projects/sanatoriy/1.jpg'
+import sanatoriy2 from '../assets/Projects/sanatoriy/2.jpg'
+import sanatoriy3 from '../assets/Projects/sanatoriy/3.jpg'
+import gostinitsa1 from '../assets/Projects/gostinitsa/1.jpg'
+import gostinitsa2 from '../assets/Projects/gostinitsa/2.jpg'
+import gostinitsa3 from '../assets/Projects/gostinitsa/3.jpg'
+import gostinitsa4 from '../assets/Projects/gostinitsa/4.jpg'
+import gostinitsa5 from '../assets/Projects/gostinitsa/5.jpg'
+import gostinitsa6 from '../assets/Projects/gostinitsa/6.jpg'
+import gostinitsa7 from '../assets/Projects/gostinitsa/7.jpg'
+import gostinitsa8 from '../assets/Projects/gostinitsa/8.jpg'
+import gostinitsa9 from '../assets/Projects/gostinitsa/9.jpg'
+import utc1 from '../assets/Projects/utc/1.jpg'
+import utc2 from '../assets/Projects/utc/2.jpg'
+import utc3 from '../assets/Projects/utc/3.jpg'
+import utc4 from '../assets/Projects/utc/4.jpg'
+import utc5 from '../assets/Projects/utc/5.jpg'
+import ipodrom1 from '../assets/Projects/ipodrom/1.jpg'
+import ipodrom2 from '../assets/Projects/ipodrom/2.jpeg'
+import belorus1 from '../assets/Projects/belorus/1.jpg'
+import belorus2 from '../assets/Projects/belorus/2.jpg'
+import belorus3 from '../assets/Projects/belorus/3.jpg'
+import belorus4 from '../assets/Projects/belorus/4.jpg'
+import belorus5 from '../assets/Projects/belorus/5.jpg'
+import belorus6 from '../assets/Projects/belorus/6.jpg'
+import technologies1 from '../assets/Projects/technologies/1.jpg'
+
 const projects = [
   {
     title: 'Национальный аэропорт Минск',
-    images: [
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 1%3C/text%3E%3C/svg%3E',
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 1%3C/text%3E%3C/svg%3E',
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 1%3C/text%3E%3C/svg%3E'
-    ]
+    images: [minsk1, minsk2]
   },
   {
     title: 'Национальная библиотека, г. Минск',
-    images: [
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 2%3C/text%3E%3C/svg%3E',
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 2%3C/text%3E%3C/svg%3E',
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 2%3C/text%3E%3C/svg%3E'
-    ]
+    images: [parkMinsk1, parkMinsk2]
   },
   {
     title: 'Бизнес-центр Kiroff',
-    images: [
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 3%3C/text%3E%3C/svg%3E',
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 3%3C/text%3E%3C/svg%3E',
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Crect fill="%23374151" width="800" height="600"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="sans-serif"%3EПроект 3%3C/text%3E%3C/svg%3E'
-    ]
+    images: [biznes1, biznes2, biznes3, biznes4, biznes5]
+  },
+  {
+    title: 'Санаторий «Берёзка»',
+    images: [sanatoriy1, sanatoriy2, sanatoriy3]
+  },
+  {
+    title: 'Гостиница "Беларусь"',
+    images: [gostinitsa1, gostinitsa2, gostinitsa3, gostinitsa4, gostinitsa5, gostinitsa6, gostinitsa7, gostinitsa8, gostinitsa9]
+  },
+  {
+    title: 'УТЦ фристайла',
+    images: [utc1, utc2, utc3, utc4, utc5]
+  },
+  {
+    title: 'Московский ипподром',
+    images: [ipodrom1, ipodrom2]
+  },
+  {
+    title: 'Административное здание РУП "ПО "Белоруснефть"',
+    images: [belorus1, belorus2, belorus3, belorus4, belorus5, belorus6]
+  },
+  {
+    title: 'Административное здание АДАНИ Технолоджис',
+    images: [technologies1]
   }
 ]
 
@@ -34,10 +82,8 @@ const orbs = [
   { color: 'cyan-500/15', size: 'w-72 h-72', pos: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2', delay: '4s' }
 ]
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index, parentInView }) => {
   const [activeImg, setActiveImg] = useState(0)
-  const ref = useRef(null)
-  const isInView = useInView(ref, { margin: "-100px" })
 
   const navigate = (dir) => {
     setActiveImg(a => dir === 'prev' 
@@ -48,10 +94,9 @@ const ProjectCard = ({ project, index }) => {
 
   return (
     <motion.div 
-      ref={ref}
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
+      animate={parentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
       className="group relative rounded-2xl overflow-hidden"
     >
       <div className="relative aspect-16/11">
@@ -98,15 +143,15 @@ const ProjectCard = ({ project, index }) => {
 
         <motion.div 
           initial={{ y: 20, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
+          animate={parentInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+          transition={{ duration: 0.3, delay: index * 0.1 + 0.2 }}
           className="absolute bottom-0 left-0 right-0 p-3 sm:p-6"
         >
           <div className="relative">
             <motion.div 
               initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
+              animate={parentInView ? { scaleX: 1 } : { scaleX: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
               className="absolute -left-2 top-0 bottom-0 w-1 bg-[#0062dd] origin-left"
             />
             <h3 className="text-white text-base sm:text-xl font-bold pl-3 sm:pl-4">{project.title}</h3>
@@ -119,7 +164,7 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { margin: "-100px" })
+  const isInView = useInView(ref, { margin: "-100px", once: true })
 
   return (
     <section id="projects" className="py-12 sm:py-16 md:py-20 bg-gray-900 relative overflow-hidden" ref={ref}>
@@ -139,7 +184,7 @@ const Projects = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {projects.map((project, i) => (
-            <ProjectCard key={i} project={project} index={i} />
+            <ProjectCard key={i} project={project} index={i} parentInView={isInView} />
           ))}
         </div>
       </div>

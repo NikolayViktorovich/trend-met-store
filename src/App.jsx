@@ -1,14 +1,11 @@
 import { useEffect, useRef } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LocomotiveScroll from 'locomotive-scroll'
 import 'locomotive-scroll/dist/locomotive-scroll.css'
 import Header from './components/Header'
-import Hero, { Stats } from './components/Hero'
-import Services from './components/Services'
-import Warehouse from './components/Warehouse'
-import About from './components/About'
-import Projects from './components/Projects'
-import Clients from './components/Clients'
 import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
 
 const App = () => {
   const scrollRef = useRef(null)
@@ -38,17 +35,16 @@ const App = () => {
   }, [])
 
   return (
-    <div ref={scrollRef} data-scroll-container className="min-h-screen bg-white overflow-x-hidden w-full max-w-full">
-      <Header />
-      <Hero />
-      <Stats />
-      <Services />
-      <Warehouse />
-      <About />
-      <Projects />
-      <Clients />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div ref={scrollRef} data-scroll-container className="min-h-screen bg-white overflow-x-hidden w-full max-w-full">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }
 

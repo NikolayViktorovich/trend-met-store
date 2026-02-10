@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import CatalogMenu from './CatalogMenu'
 
 const navItems = [
-  { href: '#about', label: 'О компании' },
+  { href: '/about', label: 'О компании', isRoute: true },
   { href: '#delivery', label: 'Доставка' },
   { href: '#contacts', label: 'Контакты' }
 ]
@@ -44,7 +45,11 @@ const Footer = () => {
               </li>
               {navItems.map(item => (
                 <li key={item.href}>
-                  <a href={item.href} className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">{item.label}</a>
+                  {item.isRoute ? (
+                    <Link to={item.href} className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">{item.label}</Link>
+                  ) : (
+                    <a href={item.href} className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">{item.label}</a>
+                  )}
                 </li>
               ))}
             </ul>

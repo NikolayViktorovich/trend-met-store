@@ -13,7 +13,8 @@
     "framer-motion": "^12.33.0",
     "locomotive-scroll": "^5.0.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",

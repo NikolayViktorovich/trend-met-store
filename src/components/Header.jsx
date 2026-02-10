@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import CatalogMenu from './CatalogMenu'
 import ContactModal from './ContactModal'
 
 const navLinks = [
-  { href: '#about', label: 'О компании' },
+  { href: '/about', label: 'О компании', isRoute: true },
   { href: '#services', label: 'Металлоконструкции' }
 ]
 
@@ -29,7 +30,9 @@ const Header = () => {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3 border-b border-gray-100">
-            <img src="/logo.svg" alt="ТрендМет" className="h-10" />
+            <Link to="/">
+              <img src="/logo.svg" alt="ТрендМет" className="h-10 cursor-pointer" />
+            </Link>
 
             <div className="flex items-center gap-3">
               <div className="hidden md:flex flex-col items-end">
@@ -60,7 +63,9 @@ const Header = () => {
           </div>
 
           <nav className="hidden lg:flex items-center justify-center gap-8 py-3">
-            {navLinks.map(link => (
+            {navLinks.map(link => link.isRoute ? (
+              <Link key={link.href} to={link.href} className="text-gray-900 hover:text-gray-700 transition-colors text-sm">{link.label}</Link>
+            ) : (
               <a key={link.href} href={link.href} className="text-gray-900 hover:text-gray-700 transition-colors text-sm">{link.label}</a>
             ))}
 
@@ -105,7 +110,11 @@ const Header = () => {
 
               {navLinks.map((link, index) => (
                 <div key={link.href}>
-                  <a href={link.href} onClick={closeMobileMenu} className="block py-3 text-gray-700 hover:text-gray-900 transition-colors text-sm">{link.label}</a>
+                  {link.isRoute ? (
+                    <Link to={link.href} onClick={closeMobileMenu} className="block py-3 text-gray-700 hover:text-gray-900 transition-colors text-sm">{link.label}</Link>
+                  ) : (
+                    <a href={link.href} onClick={closeMobileMenu} className="block py-3 text-gray-700 hover:text-gray-900 transition-colors text-sm">{link.label}</a>
+                  )}
                   {index === 0 && <div className="border-t border-gray-100"></div>}
                 </div>
               ))}
