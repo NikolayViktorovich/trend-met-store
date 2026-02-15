@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import metallImg from '../assets/Services/metall.jpg'
 import nerjstalImg from '../assets/Services/nerjstal.png'
 import balkiImg from '../assets/Services/balki.JPG'
-import kranImg from '../assets/Services/kran.JPG'
+import kranImg from '../assets/Services/kran2.png'
 import stallImg from '../assets/Services/stall.JPG'
 import lazerImg from '../assets/Services/lazer.JPG'
 
@@ -12,7 +12,7 @@ const services = [
   { title: 'Изготовление металлоконструкций', img: metallImg },
   { title: 'Металлоконструкции из нержавеющей стали', img: nerjstalImg },
   { title: 'Про-во сварных балок из черной и нержавеющей стали', img: balkiImg },
-  { title: 'Про-во мостовых и козловых кранов', img: kranImg },
+  { title: 'Про-во мостовых кранов', img: kranImg },
   { title: 'Мебель из нержавеющей стали для пищевой, химической и медицинской отраслей', img: stallImg },
   { title: 'Услуги по лазерной резке и покраске', img: lazerImg }
 ]
