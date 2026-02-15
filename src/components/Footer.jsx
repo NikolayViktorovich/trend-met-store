@@ -39,7 +39,7 @@ const Footer = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
                   </svg>
                 </button>
-                <div className={`${isCatalogOpen ? 'block' : 'hidden'} lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible`}>
+                <div className={`${isCatalogOpen ? 'block text-left' : 'hidden'} lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible`}>
                   <CatalogMenu isDark={true} />
                 </div>
               </li>

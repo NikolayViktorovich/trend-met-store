@@ -14,14 +14,11 @@ const CatalogMenu = ({ isDark = false }) => {
           </svg>
         </button>
         <div className={`absolute left-full top-0 ml-1 w-56 ${bgClass} border ${borderClass} rounded shadow-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all`}>
-          <a href="#steel-rolls" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm first:rounded-t`}>
+          <a href="/steel-rolls" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm first:rounded-t`}>
             Нержавеющие рулоны
           </a>
           <a href="#steel-sheet" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
             Лист Нержавеющий
-          </a>
-          <a href="#steel-perforated" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
-            Лист Нержавеющий перфорированный
           </a>
           <a href="#steel-tape" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm last:rounded-b`}>
             Лента нержавеющая (штрипса)
@@ -37,8 +34,8 @@ const CatalogMenu = ({ isDark = false }) => {
       <a href="#catalog-galvanized" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
         Сталь оцинкованная с полимерным покрытием
       </a>
-      <a href="#catalog-roofing" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm last:rounded-b`}>
-        Кровля
+      <a href="#own-production" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm last:rounded-b`}>
+        Продукция собств. про-ва
       </a>
     </div>
   )

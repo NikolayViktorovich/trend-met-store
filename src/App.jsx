@@ -6,6 +6,10 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
+import ProductionPage from './pages/ProductionPage'
+import CranesPage from './pages/CranesPage'
+import CranesTwoBeamPage from './pages/CranesTwoBeamPage'
+import SteelRollsPage from './pages/SteelRollsPage'
 
 const App = () => {
   const scrollRef = useRef(null)
@@ -41,6 +45,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/production" element={<ProductionPage />} />
+          <Route path="/cranes" element={<CranesPage />} />
+          <Route path="/cranes-two-beam" element={<CranesTwoBeamPage />} />
+          <Route path="/steel-rolls" element={<SteelRollsPage />} />
         </Routes>
         <Footer />
       </div>
