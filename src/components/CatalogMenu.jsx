@@ -35,9 +35,9 @@ const CatalogMenu = ({ isDark = false }) => {
         <Link to="/galvanized-steel" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
           Сталь оцинкованная с полимерным покрытием
         </Link>
-        <a href="#own-production" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
+        <Link to="/production" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
           Продукция собств. про-ва
-        </a>
+        </Link>
       </div>
     </div>
   )

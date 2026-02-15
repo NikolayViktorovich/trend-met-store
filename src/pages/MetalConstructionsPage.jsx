@@ -37,28 +37,32 @@ const MetalConstructionsPage = () => {
     })
   }
 
-  useEffect(() => {
-    const interval1 = setInterval(() => {
-      setCurrentSlide1((prev) => (prev + 1) % placeholderImages.length)
-    }, 3000)
+  const handleSlide1Prev = () => {
+    setCurrentSlide1((prev) => (prev - 1 + placeholderImages.length) % placeholderImages.length)
+  }
 
-    const interval2 = setInterval(() => {
-      setCurrentSlide2((prev) => (prev + 1) % placeholderImages.length)
-    }, 3500)
+  const handleSlide1Next = () => {
+    setCurrentSlide1((prev) => (prev + 1) % placeholderImages.length)
+  }
 
-    const interval3 = setInterval(() => {
-      setCurrentSlide3((prev) => (prev + 1) % placeholderImages.length)
-    }, 4000)
+  const handleSlide2Prev = () => {
+    setCurrentSlide2((prev) => (prev - 1 + placeholderImages.length) % placeholderImages.length)
+  }
 
-    return () => {
-      clearInterval(interval1)
-      clearInterval(interval2)
-      clearInterval(interval3)
-    }
-  }, [])
+  const handleSlide2Next = () => {
+    setCurrentSlide2((prev) => (prev + 1) % placeholderImages.length)
+  }
 
-  const Slideshow = ({ images, currentSlide }) => (
-    <div className="relative w-full h-[250px] sm:h-[300px] rounded-xl overflow-hidden bg-gray-100">
+  const handleSlide3Prev = () => {
+    setCurrentSlide3((prev) => (prev - 1 + placeholderImages.length) % placeholderImages.length)
+  }
+
+  const handleSlide3Next = () => {
+    setCurrentSlide3((prev) => (prev + 1) % placeholderImages.length)
+  }
+
+  const Slideshow = ({ images, currentSlide, onPrev, onNext }) => (
+    <div className="relative w-full h-[250px] sm:h-[300px] rounded-xl overflow-hidden bg-gray-100 group">
       {images.map((img, index) => (
         <div
           key={index}
@@ -74,13 +78,44 @@ const MetalConstructionsPage = () => {
           />
         </div>
       ))}
+      
+      <button
+        onClick={(e) => {
+          e.stopPropagation()
+          onPrev()
+        }}
+        className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white text-gray-800 transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
+        aria-label="Предыдущее изображение"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      
+      <button
+        onClick={(e) => {
+          e.stopPropagation()
+          onNext()
+        }}
+        className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white text-gray-800 transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
+        aria-label="Следующее изображение"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
       <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5">
         {images.map((_, index) => (
           <div
             key={index}
-            className={`w-1.5 h-1.5 rounded-full transition-all ${
-              index === currentSlide ? 'bg-gray-700 w-5' : 'bg-gray-700/50'
-            }`}
+            style={{
+              width: index === currentSlide ? '20px' : '6px',
+              height: '6px',
+              backgroundColor: index === currentSlide ? 'rgb(55, 65, 81)' : 'rgba(55, 65, 81, 0.5)',
+              borderRadius: '9999px',
+              transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
           />
         ))}
       </div>
@@ -104,7 +139,7 @@ const MetalConstructionsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-8 sm:mb-10 text-center"
           >
-            МЕТАЛЛОКОНСТРУКЦИИ
+            Металлоконструкции
           </motion.h1>
 
           <motion.div
@@ -138,7 +173,12 @@ const MetalConstructionsPage = () => {
                 </ul>
               </div>
               <div className="order-1 lg:order-2">
-                <Slideshow images={placeholderImages} currentSlide={currentSlide1} />
+                <Slideshow 
+                  images={placeholderImages} 
+                  currentSlide={currentSlide1}
+                  onPrev={handleSlide1Prev}
+                  onNext={handleSlide1Next}
+                />
               </div>
             </div>
           </motion.div>
@@ -151,7 +191,12 @@ const MetalConstructionsPage = () => {
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
               <div className="order-1">
-                <Slideshow images={placeholderImages} currentSlide={currentSlide2} />
+                <Slideshow 
+                  images={placeholderImages} 
+                  currentSlide={currentSlide2}
+                  onPrev={handleSlide2Prev}
+                  onNext={handleSlide2Next}
+                />
               </div>
               <div className="order-2">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
@@ -206,7 +251,12 @@ const MetalConstructionsPage = () => {
                 </ul>
               </div>
               <div className="order-1 lg:order-2">
-                <Slideshow images={placeholderImages} currentSlide={currentSlide3} />
+                <Slideshow 
+                  images={placeholderImages} 
+                  currentSlide={currentSlide3}
+                  onPrev={handleSlide3Prev}
+                  onNext={handleSlide3Next}
+                />
               </div>
             </div>
           </motion.div>
