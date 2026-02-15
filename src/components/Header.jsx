@@ -179,7 +179,7 @@ const Header = () => {
                     </div>
                     <Link to="/decorative-steel" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь нержавеющая декоративная</Link>
                     <Link to="/painted-steel" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Окрашенная сталь нержавеющая</Link>
-                    <a href="#catalog-galvanized" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь оцинкованная с полимерным покрытием</a>
+                    <Link to="/galvanized-steel" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь оцинкованная с полимерным покрытием</Link>
                     <a href="#own-production" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Продукция собств. про-ва</a>
                   </div>
                 )}

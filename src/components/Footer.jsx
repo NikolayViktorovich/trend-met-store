@@ -64,9 +64,9 @@ const Footer = () => {
                       <Link to="/painted-steel" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
                         Окрашенная сталь нержавеющая
                       </Link>
-                      <a href="#catalog-galvanized" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                      <Link to="/galvanized-steel" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
                         Сталь оцинкованная с полимерным покрытием
-                      </a>
+                      </Link>
                       <a href="#own-production" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
                         Продукция собств. про-ва
                       </a>

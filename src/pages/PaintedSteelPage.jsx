@@ -86,12 +86,12 @@ const PaintedSteelPage = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-gray-50 rounded-2xl p-6 sm:p-8 mb-8"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Одностороннее/ Двустороннее покрытие</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Одностороннее / Двустороннее покрытие</h3>
             <p className="text-gray-700 leading-relaxed mb-2">
               Покрытие полиэстер, PVDF, пурал
             </p>
             <p className="text-gray-700 leading-relaxed font-semibold">
-              Все цвета по ral - под заказ
+              Все цвета по RAL - под заказ
             </p>
           </motion.div>
 
