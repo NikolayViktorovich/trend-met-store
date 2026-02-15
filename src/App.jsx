@@ -10,6 +10,9 @@ import ProductionPage from './pages/ProductionPage'
 import CranesPage from './pages/CranesPage'
 import CranesTwoBeamPage from './pages/CranesTwoBeamPage'
 import SteelRollsPage from './pages/SteelRollsPage'
+import SteelSheetPage from './pages/SteelSheetPage'
+import PaintedSteelPage from './pages/PaintedSteelPage'
+import DecorativeSteelPage from './pages/DecorativeSteelPage'
 
 const App = () => {
   const scrollRef = useRef(null)
@@ -49,6 +52,9 @@ const App = () => {
           <Route path="/cranes" element={<CranesPage />} />
           <Route path="/cranes-two-beam" element={<CranesTwoBeamPage />} />
           <Route path="/steel-rolls" element={<SteelRollsPage />} />
+          <Route path="/steel-sheet" element={<SteelSheetPage />} />
+          <Route path="/painted-steel" element={<PaintedSteelPage />} />
+          <Route path="/decorative-steel" element={<DecorativeSteelPage />} />
         </Routes>
         <Footer />
       </div>

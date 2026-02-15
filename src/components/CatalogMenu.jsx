@@ -17,7 +17,7 @@ const CatalogMenu = ({ isDark = false }) => {
           <a href="/steel-rolls" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm first:rounded-t`}>
             Нержавеющие рулоны
           </a>
-          <a href="#steel-sheet" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
+          <a href="/steel-sheet" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
             Лист Нержавеющий
           </a>
           <a href="#steel-tape" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm last:rounded-b`}>
@@ -25,10 +25,10 @@ const CatalogMenu = ({ isDark = false }) => {
           </a>
         </div>
       </div>
-      <a href="#catalog-decorative" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
+      <a href="/decorative-steel" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
         Сталь нержавеющая декоративная
       </a>
-      <a href="#catalog-painted" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
+      <a href="/painted-steel" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
         Окрашенная сталь нержавеющая
       </a>
       <a href="#catalog-galvanized" className={`block px-4 py-2.5 ${textClass} ${hoverClass} transition-colors text-sm`}>
