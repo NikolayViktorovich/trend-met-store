@@ -32,7 +32,7 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3 border-b border-gray-100">
             <Link to="/">
-              <img src="/logo.svg" alt="ТрендМет" className="h-10 cursor-pointer" />
+              <img src="/logo.svg" alt="ТрендМет" className="h-16 cursor-pointer" />
             </Link>
 
             <div className="flex items-center gap-3">
@@ -63,7 +63,7 @@ const Header = () => {
             </div>
           </div>
 
-          <nav className="hidden lg:flex items-center justify-center gap-8 py-3">
+          <nav className="hidden lg:flex items-center justify-center gap-16 py-3">
             {navLinks.map(link => link.isRoute ? (
               <Link key={link.href} to={link.href} className="text-gray-900 hover:text-gray-700 transition-colors text-sm">{link.label}</Link>
             ) : (

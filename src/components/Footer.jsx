@@ -19,7 +19,7 @@ const Footer = () => {
             <img src="/logo.svg" alt="ТрендМет" className="h-10 sm:h-12 mb-4 sm:mb-6 brightness-0 invert mx-auto sm:mx-0" />
             <div className="space-y-2">
               <a href="tel:+79199995409" className="block text-base sm:text-lg font-semibold hover:text-gray-300 transition-colors">8 (919) 999 54 09</a>
-              <a href="mailto:maryland@inbox.ru" className="block text-xs sm:text-sm text-gray-400 hover:text-gray-300 transition-colors">maryland@inbox.ru</a>
+              <a href="mailto:zakaz@trend-met.ru" className="block text-xs sm:text-sm text-gray-400 hover:text-gray-300 transition-colors">zakaz@trend-met.ru</a>
             </div>
           </div>
 
