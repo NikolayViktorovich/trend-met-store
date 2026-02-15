@@ -168,42 +168,42 @@ const CranesPage = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mb-12 sm:mb-16"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ</h2>
             <div className="bg-gray-50 rounded-2xl overflow-hidden">
               {visibleSpecs.map((spec, index) => (
                 <div 
                   key={index}
-                  className={`grid grid-cols-1 sm:grid-cols-2 gap-4 p-6 ${index !== visibleSpecs.length - 1 ? 'border-b border-gray-200' : ''}`}
+                  className={`grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 p-4 sm:p-6 ${index !== visibleSpecs.length - 1 ? 'border-b border-gray-200' : ''}`}
                 >
-                  <div className="font-semibold text-gray-900">{spec.label}</div>
-                  <div className="text-gray-700 whitespace-pre-line">{spec.value}</div>
+                  <div className="font-semibold text-gray-900 text-sm sm:text-base">{spec.label}</div>
+                  <div className="text-gray-700 whitespace-pre-line text-sm sm:text-base">{spec.value}</div>
                 </div>
               ))}
             </div>
             
-            <div className="text-center mt-6">
+            <div className="text-center mt-4 sm:mt-6">
               <button
                 onClick={() => setShowAllSpecs(!showAllSpecs)}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#0062dd] text-white rounded-full hover:bg-[#0052bb] transition-colors font-medium"
+                className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-[#0062dd] text-white rounded-full hover:bg-[#0052bb] transition-colors font-medium text-sm sm:text-base"
               >
                 {showAllSpecs ? (
                   <>
                     Скрыть характеристики
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7"/>
                     </svg>
                   </>
                 ) : (
                   <>
                     Показать все характеристики
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
                     </svg>
                   </>
                 )}
               </button>
             </div>
-            <p className="text-gray-600 text-sm mt-6 leading-relaxed">
+            <p className="text-gray-600 text-xs sm:text-sm mt-4 sm:mt-6 leading-relaxed">
               Допускается изготовление кранов по индивидуальным требованиям, отличающихся размерами и параметрами от указанных: высотой подъема, пролетом, режимом работы, скоростями движения – на основании габаритных чертежей изготовителя, согласованных с заказчиком.
             </p>
           </motion.div>
@@ -214,7 +214,7 @@ const CranesPage = () => {
             transition={{ duration: 0.5, delay: 0.7 }}
             className="mb-12"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="hidden md:grid grid-cols-3 gap-6 mb-8">
               {documents.map((doc, index) => (
                 <a
                   key={index}
@@ -231,6 +231,24 @@ const CranesPage = () => {
                 </a>
               ))}
             </div>
+
+            <div className="flex md:hidden flex-col gap-3 mb-8">
+              {documents.map((doc, index) => (
+                <a
+                  key={index}
+                  href={`/${doc.file}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white border-2 border-[#0062dd] rounded-xl p-4 hover:bg-[#0062dd] hover:text-white transition-all group flex items-center gap-3"
+                >
+                  <svg className="w-6 h-6 text-[#0062dd] group-hover:text-white transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                  <span className="font-semibold text-sm">{doc.title}</span>
+                </a>
+              ))}
+            </div>
+
             <p className="text-gray-600 text-sm mt-8 leading-relaxed">
               Обращаем Ваше внимание, что при отсутствии четкого ТЗ на заказываемую продукцию, заполнение опросного листа является необходимой процедурой перед заказом продукции в любой серьезной компании, что позволяет безошибочно рассчитать и поставить необходимую Вам продукцию.
             </p>
@@ -248,10 +266,10 @@ const CranesPage = () => {
             <Link 
               to="/cranes-two-beam"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="bg-[#0062dd] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#0052bb] transition-colors inline-flex items-center gap-2"
+              className="bg-[#0062dd] text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-sm md:text-lg font-semibold hover:bg-[#0052bb] transition-colors inline-flex items-center gap-2"
             >
               КРАН МОСТОВОЙ ОПОРНЫЙ ДВУХБАЛОЧНЫЙ
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
               </svg>
             </Link>

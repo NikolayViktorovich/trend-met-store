@@ -80,7 +80,6 @@ const PaintedSteelPage = () => {
             Окрашенная сталь нержавеющая
           </motion.h1>
 
-          {/* Описание */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

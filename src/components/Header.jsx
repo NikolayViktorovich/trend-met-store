@@ -17,11 +17,13 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isCatalogOpen, setIsCatalogOpen] = useState(false)
   const [isCranesOpen, setIsCranesOpen] = useState(false)
+  const [isSteelOpen, setIsSteelOpen] = useState(false)
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false)
     setIsCatalogOpen(false)
     setIsCranesOpen(false)
+    setIsSteelOpen(false)
   }
 
   return (
@@ -157,10 +159,27 @@ const Header = () => {
                 </button>
                 {isCatalogOpen && (
                   <div className="pl-4 space-y-2">
-                    <a href="#steel" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь нержавеющая</a>
-                    <a href="#catalog-decorative" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь декоративная</a>
-                    <a href="#catalog-painted" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Окрашенная сталь</a>
-                    <a href="#catalog-galvanized" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь оцинкованная</a>
+                    <div>
+                      <button 
+                        onClick={() => setIsSteelOpen(!isSteelOpen)}
+                        className="w-full flex items-center justify-between py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm"
+                      >
+                        Сталь нержавеющая
+                        <svg className={`w-4 h-4 transition-transform ${isSteelOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+                        </svg>
+                      </button>
+                      {isSteelOpen && (
+                        <div className="pl-4 space-y-1">
+                          <Link to="/steel-rolls" onClick={closeMobileMenu} className="block py-1.5 text-gray-700 hover:text-gray-900 transition-colors text-sm">Нержавеющие рулоны</Link>
+                          <Link to="/steel-sheet" onClick={closeMobileMenu} className="block py-1.5 text-gray-700 hover:text-gray-900 transition-colors text-sm">Лист Нержавеющий</Link>
+                          <a href="#steel-tape" onClick={closeMobileMenu} className="block py-1.5 text-gray-700 hover:text-gray-900 transition-colors text-sm">Лента нержавеющая (штрипса)</a>
+                        </div>
+                      )}
+                    </div>
+                    <Link to="/decorative-steel" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь нержавеющая декоративная</Link>
+                    <Link to="/painted-steel" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Окрашенная сталь нержавеющая</Link>
+                    <a href="#catalog-galvanized" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь оцинкованная с полимерным покрытием</a>
                     <a href="#own-production" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Продукция собств. про-ва</a>
                   </div>
                 )}

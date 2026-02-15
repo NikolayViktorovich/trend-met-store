@@ -80,65 +80,34 @@ const SteelRollsPage = () => {
             className="mb-12"
           >
             <div className="bg-white rounded-2xl overflow-hidden border-2 border-gray-200">
-              <div className="grid grid-cols-2 sm:grid-cols-6 gap-4 p-4 sm:p-6 bg-gray-100 font-bold text-gray-900 text-sm">
-                <div className="hidden sm:block text-center">Изображение</div>
+              <div className="hidden sm:grid grid-cols-6 gap-4 p-4 sm:p-6 bg-gray-100 font-bold text-gray-900 text-sm">
+                <div className="text-center">Изображение</div>
                 <div className="text-center">Название</div>
                 <div className="text-center">Размеры</div>
-                <div className="text-center hidden sm:block">Толщина</div>
-                <div className="text-center hidden sm:block">Цена</div>
+                <div className="text-center">Толщина</div>
+                <div className="text-center">Цена</div>
                 <div className="text-center">Наличие</div>
               </div>
 
-              {steelRolls.map((roll, index) => (
-                <div 
-                  key={index}
-                  className={`grid grid-cols-2 sm:grid-cols-6 gap-4 p-4 sm:p-6 items-center ${index !== steelRolls.length - 1 ? 'border-b border-gray-200' : ''}`}
-                >
-                  <div className="hidden sm:flex justify-center">
-                    <img 
-                      src={rollImage} 
-                      alt={roll.name}
-                      className="w-20 h-20 object-contain"
-                    />
-                  </div>
-                  <div className="text-center font-semibold text-gray-900">{roll.name}</div>
-                  <div className="text-center text-gray-700">{roll.size}</div>
-                  <div className="text-center text-gray-700 hidden sm:block">{roll.thickness}</div>
-                  <div className="text-center text-gray-700 hidden sm:block">{roll.price}</div>
-                  <div className="text-center">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${
-                      roll.availability === 'в наличии' 
-                        ? 'bg-green-500 text-white' 
-                        : 'bg-gray-400 text-white'
-                    }`}>
-                      {roll.availability === 'в наличии' ? (
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                        </svg>
-                      ) : (
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clipRule="evenodd"/>
-                        </svg>
-                      )}
-                      {roll.availability}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="sm:hidden mt-6 space-y-4">
-              {steelRolls.map((roll, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-4">
-                  <div className="flex items-center gap-4 mb-3">
-                    <img 
-                      src={rollImage} 
-                      alt={roll.name}
-                      className="w-16 h-16 object-contain"
-                    />
-                    <div>
-                      <div className="font-bold text-gray-900">{roll.name}</div>
-                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium mt-1 ${
+              <div className="hidden sm:block">
+                {steelRolls.map((roll, index) => (
+                  <div 
+                    key={index}
+                    className={`grid grid-cols-6 gap-4 p-4 sm:p-6 items-center ${index !== steelRolls.length - 1 ? 'border-b border-gray-200' : ''}`}
+                  >
+                    <div className="flex justify-center">
+                      <img 
+                        src={rollImage} 
+                        alt={roll.name}
+                        className="w-20 h-20 object-contain"
+                      />
+                    </div>
+                    <div className="text-center font-semibold text-gray-900">{roll.name}</div>
+                    <div className="text-center text-gray-700">{roll.size}</div>
+                    <div className="text-center text-gray-700">{roll.thickness}</div>
+                    <div className="text-center text-gray-700">{roll.price}</div>
+                    <div className="text-center">
+                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${
                         roll.availability === 'в наличии' 
                           ? 'bg-green-500 text-white' 
                           : 'bg-gray-400 text-white'
@@ -156,16 +125,49 @@ const SteelRollsPage = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div className="text-gray-600">Размеры:</div>
-                    <div className="text-gray-900 font-medium">{roll.size}</div>
-                    <div className="text-gray-600">Толщина:</div>
-                    <div className="text-gray-900 font-medium">{roll.thickness}</div>
-                    <div className="text-gray-600">Цена:</div>
-                    <div className="text-gray-900 font-medium">{roll.price}</div>
+                ))}
+              </div>
+
+              <div className="sm:hidden space-y-4 p-4">
+                {steelRolls.map((roll, index) => (
+                  <div key={index} className="bg-gray-50 rounded-xl p-4">
+                    <div className="flex items-start gap-4 mb-4">
+                      <img 
+                        src={rollImage} 
+                        alt={roll.name}
+                        className="w-20 h-20 object-contain flex-shrink-0"
+                      />
+                      <div className="flex-1">
+                        <div className="font-bold text-gray-900 mb-2">{roll.name}</div>
+                        <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${
+                          roll.availability === 'в наличии' 
+                            ? 'bg-green-500 text-white' 
+                            : 'bg-gray-400 text-white'
+                        }`}>
+                          {roll.availability === 'в наличии' ? (
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                            </svg>
+                          ) : (
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clipRule="evenodd"/>
+                            </svg>
+                          )}
+                          {roll.availability}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-sm">
+                      <div className="text-gray-600">Размеры:</div>
+                      <div className="text-gray-900 font-medium">{roll.size}</div>
+                      <div className="text-gray-600">Толщина:</div>
+                      <div className="text-gray-900 font-medium">{roll.thickness}</div>
+                      <div className="text-gray-600">Цена:</div>
+                      <div className="text-gray-900 font-medium">{roll.price}</div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </motion.div>
 

@@ -29,7 +29,7 @@ const Footer = () => {
               <li>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">Главная</a>
               </li>
-              <li className="relative group">
+              <li className="relative">
                 <button 
                   onClick={() => setIsCatalogOpen(!isCatalogOpen)}
                   className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1 text-xs sm:text-sm"
@@ -39,7 +39,41 @@ const Footer = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
                   </svg>
                 </button>
-                <div className={`${isCatalogOpen ? 'block text-left' : 'hidden'} lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible`}>
+                {isCatalogOpen && (
+                  <div className="lg:hidden absolute bottom-full left-0 mb-2 bg-black rounded-lg p-3 space-y-2 border-2 border-[#0062dd] min-w-[250px] z-50 text-left">
+                    <div>
+                      <div className="font-semibold text-white py-1.5 text-xs">
+                        Сталь нержавеющая
+                      </div>
+                      <div className="pl-3 space-y-1 border-l-2 border-[#0062dd] ml-1">
+                        <Link to="/steel-rolls" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                          Нержавеющие рулоны
+                        </Link>
+                        <Link to="/steel-sheet" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                          Лист Нержавеющий
+                        </Link>
+                        <a href="#steel-tape" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                          Лента нержавеющая (штрипса)
+                        </a>
+                      </div>
+                    </div>
+                    <div className="border-t border-[#0062dd] pt-2">
+                      <Link to="/decorative-steel" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                        Сталь нержавеющая декоративная
+                      </Link>
+                      <Link to="/painted-steel" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                        Окрашенная сталь нержавеющая
+                      </Link>
+                      <a href="#catalog-galvanized" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                        Сталь оцинкованная с полимерным покрытием
+                      </a>
+                      <a href="#own-production" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                        Продукция собств. про-ва
+                      </a>
+                    </div>
+                  </div>
+                )}
+                <div className="hidden lg:block lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible">
                   <CatalogMenu isDark={true} />
                 </div>
               </li>
