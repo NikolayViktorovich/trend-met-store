@@ -45,6 +45,9 @@ const OwnProduction = () => {
           style={{ backgroundColor: orb.color, animationDelay: orb.delay }} 
         />
       ))}
+      
+      {/* Gradient fade at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.h2 
