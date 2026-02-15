@@ -5,7 +5,7 @@ import ContactModal from './ContactModal'
 
 const navLinks = [
   { href: '/about', label: 'О компании', isRoute: true },
-  { href: '#services', label: 'Металлоконструкции' }
+  { href: '/metal-constructions', label: 'Металлоконструкции', isRoute: true }
 ]
 
 const craneLinks = [

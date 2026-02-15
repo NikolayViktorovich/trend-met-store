@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Breadcrumbs from '../components/Breadcrumbs'
+import ImageModal from '../components/ImageModal'
 
 import crane1 from '../assets/Kran/Dvuhbaloch/1cxtd-double-girder-overhead-crane-with-low-headroom.jpg'
 import crane2 from '../assets/Kran/Dvuhbaloch/3cxtd-double-girder-overhead-crane-with-low-headroom.jpg'
@@ -64,10 +65,29 @@ const craneImages = [
 
 const CranesTwoBeamPage = () => {
   const [showAllSpecs, setShowAllSpecs] = useState(false)
+  const [modalState, setModalState] = useState({ isOpen: false, currentIndex: 0 })
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const imagesList = craneImages.map((img, index) => ({
+    src: img,
+    alt: `Двухбалочный кран ${index + 1}`
+  }))
+
+  const handleImageClick = (index) => {
+    setModalState({ isOpen: true, currentIndex: index })
+  }
+
+  const handleNavigate = (direction) => {
+    setModalState(prev => {
+      const newIndex = direction === 'next' 
+        ? (prev.currentIndex + 1) % imagesList.length
+        : (prev.currentIndex - 1 + imagesList.length) % imagesList.length
+      return { ...prev, currentIndex: newIndex }
+    })
+  }
 
   const visibleSpecs = showAllSpecs ? specifications : specifications.slice(0, 3)
 
@@ -79,13 +99,13 @@ const CranesTwoBeamPage = () => {
         ]} 
       />
       
-      <section className="py-12 sm:py-16 md:py-20">
+      <section className="py-8 sm:py-12 md:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-8 sm:mb-12 text-center"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-8 sm:mb-10 text-center"
           >
             Кран мостовой опорный двухбалочный
           </motion.h1>
@@ -116,6 +136,7 @@ const CranesTwoBeamPage = () => {
                 <div 
                   key={index}
                   className="aspect-square rounded-xl overflow-hidden bg-gray-100 hover:scale-105 transition-transform cursor-pointer"
+                  onClick={() => handleImageClick(index)}
                 >
                   <img 
                     src={img} 
@@ -285,6 +306,14 @@ const CranesTwoBeamPage = () => {
           </motion.div>
         </div>
       </section>
+
+      <ImageModal
+        isOpen={modalState.isOpen}
+        onClose={() => setModalState({ isOpen: false, currentIndex: 0 })}
+        images={imagesList}
+        currentIndex={modalState.currentIndex}
+        onNavigate={handleNavigate}
+      />
     </div>
   )
 }

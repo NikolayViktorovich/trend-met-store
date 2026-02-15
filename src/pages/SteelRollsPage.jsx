@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Breadcrumbs from '../components/Breadcrumbs'
+import ImageModal from '../components/ImageModal'
 import rollImage from '../assets/rulon-nerj.jpg'
 
 const steelRolls = [
@@ -35,9 +36,15 @@ const steelRolls = [
 ]
 
 const SteelRollsPage = () => {
+  const [modalState, setModalState] = useState({ isOpen: false, currentIndex: 0 })
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const handleImageClick = () => {
+    setModalState({ isOpen: true, currentIndex: 0 })
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -48,13 +55,13 @@ const SteelRollsPage = () => {
         ]} 
       />
       
-      <section className="py-12 sm:py-16 md:py-20">
+      <section className="py-8 sm:py-12 md:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-8 sm:mb-12 text-center"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8 text-center"
           >
             Нержавеющие рулоны
           </motion.h1>
@@ -63,7 +70,7 @@ const SteelRollsPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gray-50 rounded-2xl p-6 sm:p-8 mb-12"
+            className="bg-gray-50 rounded-xl p-4 sm:p-6 mb-8"
           >
             <p className="text-gray-700 leading-relaxed mb-4">
               Нержавеющие рулоны – это листовой прокат из нержавеющей стали, свернутый в рулон для удобства транспортировки и хранения. Используются в различных отраслях промышленности благодаря высокой коррозионной стойкости и долговечности.
@@ -77,9 +84,9 @@ const SteelRollsPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-12"
+            className="mb-8"
           >
-            <div className="bg-white rounded-2xl overflow-hidden border-2 border-gray-200">
+            <div className="bg-white rounded-xl overflow-hidden border-2 border-gray-200">
               <div className="hidden sm:grid grid-cols-6 gap-4 p-4 sm:p-6 bg-gray-100 font-bold text-gray-900 text-sm">
                 <div className="text-center">Изображение</div>
                 <div className="text-center">Название</div>
@@ -99,7 +106,8 @@ const SteelRollsPage = () => {
                       <img 
                         src={rollImage} 
                         alt={roll.name}
-                        className="w-20 h-20 object-contain"
+                        className="w-20 h-20 object-contain cursor-pointer hover:scale-110 transition-transform"
+                        onClick={handleImageClick}
                       />
                     </div>
                     <div className="text-center font-semibold text-gray-900">{roll.name}</div>
@@ -135,7 +143,8 @@ const SteelRollsPage = () => {
                       <img 
                         src={rollImage} 
                         alt={roll.name}
-                        className="w-20 h-20 object-contain flex-shrink-0"
+                        className="w-20 h-20 object-contain flex-shrink-0 cursor-pointer hover:scale-110 transition-transform"
+                        onClick={handleImageClick}
                       />
                       <div className="flex-1">
                         <div className="font-bold text-gray-900 mb-2">{roll.name}</div>
@@ -175,10 +184,10 @@ const SteelRollsPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-[#0062dd] text-white rounded-2xl p-6 sm:p-8 mb-12"
+            className="bg-[#0062dd] text-white rounded-xl p-4 sm:p-6 mb-8"
           >
-            <h2 className="text-2xl font-bold mb-6">Преимущества нержавеющих рулонов:</h2>
-            <ul className="space-y-3">
+            <h2 className="text-xl font-bold mb-4">Преимущества нержавеющих рулонов:</h2>
+            <ul className="space-y-2">
               <li className="flex items-start gap-3">
                 <svg className="w-6 h-6 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
@@ -218,24 +227,24 @@ const SteelRollsPage = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="text-center"
           >
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 mb-4 text-sm">
               Для уточнения цен и наличия, а также для оформления заказа, свяжитесь с нашими менеджерами
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a 
                 href="tel:+79199995409"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0062dd] text-white rounded-full hover:bg-[#0052bb] transition-colors font-semibold"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0062dd] text-white rounded-full hover:bg-[#0052bb] transition-colors font-semibold text-sm"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                 </svg>
                 +7 (919) 999-54-09
               </a>
               <a 
                 href="mailto:zakaz@trend-met.ru"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 transition-colors font-semibold"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 transition-colors font-semibold text-sm"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
                 zakaz@trend-met.ru
@@ -244,6 +253,14 @@ const SteelRollsPage = () => {
           </motion.div>
         </div>
       </section>
+
+      <ImageModal
+        isOpen={modalState.isOpen}
+        onClose={() => setModalState({ isOpen: false, currentIndex: 0 })}
+        images={[{ src: rollImage, alt: 'Нержавеющий рулон' }]}
+        currentIndex={0}
+        onNavigate={() => {}}
+      />
     </div>
   )
 }
