@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const CatalogMenu = ({ isDark = false }) => {
   const bgClass = isDark ? 'bg-black' : 'bg-white'
   const borderClass = isDark ? 'border-[#0062dd]' : 'border-gray-200'
@@ -12,24 +14,24 @@ const CatalogMenu = ({ isDark = false }) => {
           Сталь нержавеющая
         </div>
         <div className={`pl-3 lg:pl-4 space-y-1 lg:space-y-1.5 border-l-2 ${isDark ? 'border-[#0062dd]' : 'border-gray-200'} ml-1`}>
-          <a href="/steel-rolls" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
+          <Link to="/steel-rolls" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
             Нержавеющие рулоны
-          </a>
-          <a href="/steel-sheet" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
+          </Link>
+          <Link to="/steel-sheet" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
             Лист Нержавеющий
-          </a>
+          </Link>
           <a href="#steel-tape" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
             Лента нержавеющая (штрипса)
           </a>
         </div>
       </div>
       <div className={`border-t ${isDark ? 'border-[#0062dd]' : 'border-gray-200'} pt-2 lg:pt-3`}>
-        <a href="/decorative-steel" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
+        <Link to="/decorative-steel" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
           Сталь нержавеющая декоративная
-        </a>
-        <a href="/painted-steel" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
+        </Link>
+        <Link to="/painted-steel" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
           Окрашенная сталь нержавеющая
-        </a>
+        </Link>
         <a href="#catalog-galvanized" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
           Сталь оцинкованная с полимерным покрытием
         </a>
