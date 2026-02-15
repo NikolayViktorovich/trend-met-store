@@ -29,7 +29,7 @@ const Footer = () => {
               <li>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">Главная</a>
               </li>
-              <li className="relative">
+              <li className="relative group">
                 <button 
                   onClick={() => setIsCatalogOpen(!isCatalogOpen)}
                   className="text-gray-400 hover:text-white transition-colors inline-flex items-center gap-1 text-xs sm:text-sm"
@@ -73,7 +73,8 @@ const Footer = () => {
                     </div>
                   </div>
                 )}
-                <div className="hidden lg:block lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible">
+
+                <div className="hidden lg:block">
                   <CatalogMenu isDark={true} />
                 </div>
               </li>
