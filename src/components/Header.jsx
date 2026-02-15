@@ -65,40 +65,40 @@ const Header = () => {
 
           <nav className="hidden lg:flex items-center justify-center gap-16 py-3">
             {navLinks.map(link => link.isRoute ? (
-              <Link key={link.href} to={link.href} className="text-gray-900 hover:text-gray-700 transition-colors text-sm">{link.label}</Link>
+              <Link key={link.href} to={link.href} className="text-gray-900 hover:text-gray-700 transition-colors text-base">{link.label}</Link>
             ) : (
-              <a key={link.href} href={link.href} className="text-gray-900 hover:text-gray-700 transition-colors text-sm">{link.label}</a>
+              <a key={link.href} href={link.href} className="text-gray-900 hover:text-gray-700 transition-colors text-base">{link.label}</a>
             ))}
 
             <div className="relative group">
-              <button className="text-gray-900 hover:text-gray-700 transition-colors flex items-center gap-1 text-sm">
+              <button className="text-gray-900 hover:text-gray-700 transition-colors flex items-center gap-1 text-base">
                 Краны
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
                 </svg>
               </button>
               <div className="absolute top-full mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                 {craneLinks.map((link, i) => 
                   link.isRoute ? (
-                    <Link key={link.href} to={link.href} className={`block px-4 py-2.5 text-gray-900 hover:bg-gray-50 transition-colors text-sm ${i === 0 ? 'rounded-t' : 'rounded-b'}`}>{link.label}</Link>
+                    <Link key={link.href} to={link.href} className={`block px-4 py-2.5 text-gray-900 hover:bg-gray-50 transition-colors text-base ${i === 0 ? 'rounded-t' : 'rounded-b'}`}>{link.label}</Link>
                   ) : (
-                    <a key={link.href} href={link.href} className={`block px-4 py-2.5 text-gray-900 hover:bg-gray-50 transition-colors text-sm ${i === 0 ? 'rounded-t' : 'rounded-b'}`}>{link.label}</a>
+                    <a key={link.href} href={link.href} className={`block px-4 py-2.5 text-gray-900 hover:bg-gray-50 transition-colors text-base ${i === 0 ? 'rounded-t' : 'rounded-b'}`}>{link.label}</a>
                   )
                 )}
               </div>
             </div>
 
             <div className="relative group">
-              <button className="text-gray-900 hover:text-gray-700 transition-colors flex items-center gap-1 text-sm">
+              <button className="text-gray-900 hover:text-gray-700 transition-colors flex items-center gap-1 text-base">
                 Каталог
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
                 </svg>
               </button>
               <CatalogMenu />
             </div>
 
-            <a href="#furniture" className="text-gray-900 hover:text-gray-700 transition-colors text-sm">Мет. мебель</a>
+            <a href="#furniture" className="text-gray-900 hover:text-gray-700 transition-colors text-base">Мет. мебель</a>
           </nav>
 
           {isMobileMenuOpen && (
