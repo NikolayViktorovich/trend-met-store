@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import metallImg from '../assets/Services/metall.jpg'
 import nerjstalImg from '../assets/Services/nerjstal.png'
 import balkiImg from '../assets/Services/balki.JPG'
@@ -9,17 +10,18 @@ import stallImg from '../assets/Services/stall.JPG'
 import lazerImg from '../assets/Services/lazer.JPG'
 
 const services = [
-  { title: 'Изготовление металлоконструкций', img: metallImg },
-  { title: 'Металлоконструкции из нержавеющей стали', img: nerjstalImg },
-  { title: 'Про-во сварных балок из черной и нержавеющей стали', img: balkiImg },
-  { title: 'Про-во мостовых кранов', img: kranImg },
-  { title: 'Мебель из нержавеющей стали для пищевой, химической и медицинской отраслей', img: stallImg },
-  { title: 'Услуги по лазерной резке и покраске', img: lazerImg }
+  { title: 'Изготовление металлоконструкций', img: metallImg, route: '/metal-constructions' },
+  { title: 'Металлоконструкции из нержавеющей стали', img: nerjstalImg, route: '/metal-constructions' },
+  { title: 'Про-во сварных балок из черной и нержавеющей стали', img: balkiImg, route: '/metal-constructions' },
+  { title: 'Про-во мостовых кранов', img: kranImg, route: '/cranes' },
+  { title: 'Мебель из нержавеющей стали для пищевой, химической и медицинской отраслей', img: stallImg, route: '/metal-constructions' },
+  { title: 'Услуги по лазерной резке и покраске', img: lazerImg, route: '/metal-constructions' }
 ]
 
 const Services = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { margin: "-100px" })
+  const navigate = useNavigate()
 
   return (
     <section id="services" className="py-12 sm:py-16 md:py-20 bg-white" ref={ref}>
@@ -40,7 +42,8 @@ const Services = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl aspect-4/3"
+              onClick={() => navigate(s.route)}
+              className="group relative overflow-hidden rounded-2xl aspect-4/3 cursor-pointer"
             >
               <img src={s.img} alt={s.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
