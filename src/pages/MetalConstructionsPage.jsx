@@ -2,6 +2,12 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Breadcrumbs from '../components/Breadcrumbs'
 import ImageModal from '../components/ImageModal'
+import metalMachine1 from '../assets/metal_machine/1.jpg'
+import metalMachine2 from '../assets/metal_machine/2.jpg'
+import metalMachine3 from '../assets/metal_machine/3.jpg'
+import nerjProiz1 from '../assets/nerj-proiz-stal/1.png'
+import nerjProiz2 from '../assets/nerj-proiz-stal/2.jpg'
+import nerjProiz3 from '../assets/nerj-proiz-stal/3.jpg'
 
 const MetalConstructionsPage = () => {
   const [currentSlides, setCurrentSlides] = useState([0, 0, 0])
@@ -17,6 +23,7 @@ const MetalConstructionsPage = () => {
     {
       id: 0,
       title: 'Металлоконструкции строительные',
+      images: placeholderImages,
       items: [
         'типовые строительные конструкции (фермы, колонны, связи)',
         'нестандартные металлические конструкции',
@@ -27,6 +34,7 @@ const MetalConstructionsPage = () => {
     {
       id: 1,
       title: 'Металлоконструкции для машиностроения',
+      images: [metalMachine1, metalMachine2, metalMachine3],
       items: [
         'сварные хребтовые, боковые, концевые балки в вагоностроении',
         'подкрановые пути и крановые балки',
@@ -36,6 +44,7 @@ const MetalConstructionsPage = () => {
     {
       id: 2,
       title: 'Производство из нержавеющих сталей',
+      images: [nerjProiz1, nerjProiz2, nerjProiz3],
       items: [
         'металлоконструкции для химической и нефтехимической промышленности, нестандартные емкости, контейнеры, бункера, течки',
         'приточки, вентиляционные и аспирационные системы',
@@ -49,13 +58,20 @@ const MetalConstructionsPage = () => {
     window.scrollTo(0, 0)
   }, [])
 
-  const imagesList = placeholderImages.map((img, index) => ({
-    src: img,
-    alt: `Изображение ${index + 1}`
-  }))
+  const getAllImages = () => {
+    return sections.flatMap(section => 
+      section.images.map((img, idx) => ({
+        src: img,
+        alt: `${section.title} ${idx + 1}`
+      }))
+    )
+  }
 
-  const handleImageClick = (index) => {
-    setModalState({ isOpen: true, currentIndex: index })
+  const imagesList = getAllImages()
+
+  const handleImageClick = (sectionIndex, imgIndex) => {
+    const globalIndex = sections.slice(0, sectionIndex).reduce((acc, s) => acc + s.images.length, 0) + imgIndex
+    setModalState({ isOpen: true, currentIndex: globalIndex })
   }
 
   const handleNavigate = (direction) => {
@@ -70,10 +86,11 @@ const MetalConstructionsPage = () => {
   const updateSlide = (sectionIndex, direction) => {
     setCurrentSlides(prev => {
       const newSlides = [...prev]
+      const section = sections[sectionIndex]
       if (direction === 'next') {
-        newSlides[sectionIndex] = (newSlides[sectionIndex] + 1) % placeholderImages.length
+        newSlides[sectionIndex] = (newSlides[sectionIndex] + 1) % section.images.length
       } else {
-        newSlides[sectionIndex] = (newSlides[sectionIndex] - 1 + placeholderImages.length) % placeholderImages.length
+        newSlides[sectionIndex] = (newSlides[sectionIndex] - 1 + section.images.length) % section.images.length
       }
       return newSlides
     })
@@ -118,7 +135,7 @@ const MetalConstructionsPage = () => {
                 }`}>
                   <div className={`relative ${sectionIndex % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
                     <div className="relative h-[350px] rounded-xl overflow-hidden shadow-lg group">
-                      {placeholderImages.map((img, imgIndex) => (
+                      {section.images.map((img, imgIndex) => (
                         <motion.div
                           key={imgIndex}
                           initial={false}
@@ -128,7 +145,7 @@ const MetalConstructionsPage = () => {
                           }}
                           transition={{ duration: 0.5 }}
                           className="absolute inset-0 cursor-pointer"
-                          onClick={() => handleImageClick(imgIndex)}
+                          onClick={() => handleImageClick(sectionIndex, imgIndex)}
                         >
                           <img
                             src={img}
@@ -158,7 +175,7 @@ const MetalConstructionsPage = () => {
                       </button>
 
                       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-                        {placeholderImages.map((_, idx) => (
+                        {section.images.map((_, idx) => (
                           <button
                             key={idx}
                             onClick={() => setCurrentSlides(prev => {
