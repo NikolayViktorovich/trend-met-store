@@ -8,22 +8,19 @@ import metalMachine3 from '../assets/metal_machine/3.jpg'
 import nerjProiz1 from '../assets/nerj-proiz-stal/1.png'
 import nerjProiz2 from '../assets/nerj-proiz-stal/2.jpg'
 import nerjProiz3 from '../assets/nerj-proiz-stal/3.jpg'
+import metaloStroit1 from '../assets/metalo-stroit/1.jpg'
+import metaloStroit2 from '../assets/metalo-stroit/2.jpg'
+import metaloStroit3 from '../assets/metalo-stroit/3.jpg'
 
 const MetalConstructionsPage = () => {
   const [currentSlides, setCurrentSlides] = useState([0, 0, 0])
   const [modalState, setModalState] = useState({ isOpen: false, currentIndex: 0 })
 
-  const placeholderImages = [
-    'https://via.placeholder.com/800x600/0062dd/ffffff?text=Изображение+1',
-    'https://via.placeholder.com/800x600/0052bb/ffffff?text=Изображение+2',
-    'https://via.placeholder.com/800x600/0062dd/ffffff?text=Изображение+3'
-  ]
-
   const sections = [
     {
       id: 0,
       title: 'Металлоконструкции строительные',
-      images: placeholderImages,
+      images: [metaloStroit1, metaloStroit2, metaloStroit3],
       items: [
         'типовые строительные конструкции (фермы, колонны, связи)',
         'нестандартные металлические конструкции',
