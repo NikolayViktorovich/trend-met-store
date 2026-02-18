@@ -275,7 +275,6 @@ const GalvanizedSteelPage = () => {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="mb-6"
           >
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 text-center">Оцинковка</h2>
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
               <div className="relative group">
                 <div className="absolute inset-0 bg-[#0062dd] rounded-full blur-sm opacity-0 group-hover:opacity-20 transition-opacity"></div>
