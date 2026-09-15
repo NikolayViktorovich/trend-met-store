@@ -19,6 +19,12 @@ const galleryImages = [
   { src: raceTrack, alt: 'Скачки на ипподроме' }
 ]
 
+const dennikiBgOrbs = [
+  { color: 'rgba(34, 197, 94, 0.1)', size: 'w-96 h-96', pos: 'top-20 right-20', delay: '0s' },
+  { color: 'rgba(16, 185, 129, 0.1)', size: 'w-80 h-80', pos: 'bottom-20 left-20', delay: '2s' },
+  { color: 'rgba(20, 184, 166, 0.08)', size: 'w-72 h-72', pos: 'top-1/2 right-1/3', delay: '4s' }
+]
+
 const features = [
   'Изготовление по вашим чертежам и размерам помещения',
   'Подбор материалов, цвета и фурнитуры под ваш проект',
@@ -196,9 +202,19 @@ const DennikiPage = () => {
         ]}
       />
 
-      <section className="py-8 sm:py-12 md:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-12 sm:mb-16">
+      <section className="py-8 sm:py-12 md:py-14 bg-gray-900 relative overflow-hidden">
+        {dennikiBgOrbs.map((orb, index) => (
+          <div
+            key={index}
+            aria-hidden="true"
+            className={`absolute ${orb.size} ${orb.pos} rounded-full blur-3xl glow-orb`}
+            style={{ backgroundColor: orb.color, animationDelay: orb.delay }}
+          />
+        ))}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none" aria-hidden="true" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -268,8 +284,8 @@ const DennikiPage = () => {
                     aria-current={index === activeImage ? 'true' : undefined}
                     aria-label={`Показать фото ${index + 1}`}
                     onClick={() => setActiveImage(index)}
-                    className={`min-w-0 flex-1 aspect-square lg:flex-none lg:w-20 lg:h-20 rounded-lg lg:rounded-xl overflow-hidden border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd] focus-visible:ring-offset-2 ${
-                      index === activeImage ? 'border-[#0062dd]' : 'border-gray-200 hover:border-gray-400'
+                    className={`min-w-0 flex-1 aspect-square lg:flex-none lg:w-20 lg:h-20 rounded-lg lg:rounded-xl overflow-hidden border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 ${
+                      index === activeImage ? 'border-[#0062dd]' : 'border-gray-600 hover:border-gray-400'
                     }`}
                   >
                     <img src={image.src} alt="" className="w-full h-full object-cover" />
@@ -283,29 +299,29 @@ const DennikiPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 text-balance">
+              <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 text-balance">
                 Собственное производство денников и конюшенного оборудования
               </h1>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-pretty">
-                Мы — <span className="font-bold text-gray-900">частное производство полного цикла</span>: проектируем и изготавливаем денники и любое конюшенное оснащение под ваш объект — от типовых решений до полностью индивидуальных заказов по вашим размерам, эскизам и пожеланиям.
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6 text-pretty">
+                Мы — <span className="font-bold text-white">частное производство полного цикла</span>: проектируем и изготавливаем денники и любое конюшенное оснащение под ваш объект — от типовых решений до полностью индивидуальных заказов по вашим размерам, эскизам и пожеланиям.
               </p>
 
               <ul className="mb-6">
                 {features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3 py-3 border-b border-gray-100 last:border-b-0">
+                  <li key={feature} className="flex items-start gap-3 py-3 border-b border-gray-700 last:border-b-0">
                     <span className="mt-0.5 w-5 h-5 rounded-full bg-[#0062dd] flex items-center justify-center shrink-0">
                       <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
-                    <span className="text-sm sm:text-base text-gray-700 leading-snug text-pretty">{feature}</span>
+                    <span className="text-sm sm:text-base text-gray-200 leading-snug text-pretty">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="bg-gray-50 rounded-xl p-4 sm:p-5 mb-6">
-                <p className="text-xs font-semibold tracking-wide text-gray-900 mb-2">Скидки на объём</p>
-                <p className="text-sm text-gray-600 leading-relaxed text-pretty">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-5 mb-6">
+                <p className="text-xs font-semibold tracking-wide text-white mb-2">Скидки на объём</p>
+                <p className="text-sm text-gray-300 leading-relaxed text-pretty">
                   Чем больше заказ — тем выгоднее цена за денник. Точные условия и стоимость рассчитываем индивидуально под ваш объём и комплектацию.
                 </p>
               </div>
@@ -322,14 +338,18 @@ const DennikiPage = () => {
                   href="https://wa.me/79199995409"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 active:scale-[0.96] transition-[background-color,transform] font-medium text-sm"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white rounded-full hover:bg-white/20 active:scale-[0.96] transition-[background-color,transform] font-medium text-sm"
                 >
                   Написать в мессенджер
                 </a>
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
 
+      <section className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-6 sm:pb-8 md:pb-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -397,7 +417,7 @@ const DennikiPage = () => {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 md:py-20" aria-labelledby="denniki-works-heading">
+      <section className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 md:pb-20" aria-labelledby="denniki-works-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <DennikiWorks inactive={isModalOpen || isContactOpen} />
         </div>
