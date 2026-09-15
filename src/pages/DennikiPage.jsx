@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Breadcrumbs from '../components/Breadcrumbs'
 import ImageModal from '../components/ImageModal'
@@ -123,6 +123,8 @@ const DennikiPage = () => {
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [reduceMotion, setReduceMotion] = useState(false)
   const [isTabHidden, setIsTabHidden] = useState(false)
+  const touchStartX = useRef(0)
+  const didSwipe = useRef(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -152,6 +154,10 @@ const DennikiPage = () => {
   }, [reduceMotion, isModalOpen, isContactOpen, isTabHidden, activeImage])
 
   const openModal = (index) => {
+    if (didSwipe.current) {
+      didSwipe.current = false
+      return
+    }
     setActiveImage(index)
     setIsModalOpen(true)
   }
@@ -166,11 +172,19 @@ const DennikiPage = () => {
 
   const stepImage = (event, direction) => {
     event.stopPropagation()
-    setActiveImage((prev) => (
-      direction === 'next'
-        ? (prev + 1) % galleryImages.length
-        : (prev - 1 + galleryImages.length) % galleryImages.length
-    ))
+    handleNavigate(direction)
+  }
+
+  const onGalleryTouchStart = (event) => {
+    touchStartX.current = event.changedTouches[0].clientX
+    didSwipe.current = false
+  }
+
+  const onGalleryTouchEnd = (event) => {
+    const dx = event.changedTouches[0].clientX - touchStartX.current
+    if (Math.abs(dx) < 40) return
+    didSwipe.current = true
+    handleNavigate(dx < 0 ? 'next' : 'prev')
   }
 
   return (
@@ -189,26 +203,13 @@ const DennikiPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col-reverse sm:flex-row gap-3"
+              className="flex flex-col gap-3 lg:flex-row"
             >
-              <div className="flex sm:flex-col gap-2 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0" aria-label="Фотографии денников">
-                {galleryImages.map((image, index) => (
-                  <button
-                    key={image.alt}
-                    type="button"
-                    aria-current={index === activeImage ? 'true' : undefined}
-                    aria-label={`Показать фото ${index + 1}`}
-                    onClick={() => setActiveImage(index)}
-                    className={`shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd] focus-visible:ring-offset-2 ${
-                      index === activeImage ? 'border-[#0062dd]' : 'border-gray-200 hover:border-gray-400'
-                    }`}
-                  >
-                    <img src={image.src} alt="" className="w-full h-full object-cover" />
-                  </button>
-                ))}
-              </div>
-
-              <div className="relative group flex-1 rounded-2xl overflow-hidden bg-gray-100 aspect-4/3 min-h-0">
+              <div
+                className="relative group flex-1 rounded-2xl overflow-hidden bg-gray-100 aspect-4/3 min-h-0 select-none"
+                onTouchStart={onGalleryTouchStart}
+                onTouchEnd={onGalleryTouchEnd}
+              >
                 {galleryImages.map((image, index) => (
                   <img
                     key={image.alt}
@@ -218,6 +219,7 @@ const DennikiPage = () => {
                     decoding="async"
                     loading={index === 0 ? 'eager' : 'lazy'}
                     fetchPriority={index === 0 ? 'high' : 'low'}
+                    draggable={false}
                     className={`absolute inset-0 w-full h-full object-cover ${reduceMotion ? '' : 'transition-opacity duration-500'} ${
                       index === activeImage ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
@@ -235,7 +237,7 @@ const DennikiPage = () => {
                   <button
                     type="button"
                     onClick={(event) => stepImage(event, 'prev')}
-                    className="pointer-events-auto absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 shadow-md flex items-center justify-center hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd]"
+                    className="pointer-events-auto absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 shadow-md flex items-center justify-center hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd]"
                     aria-label="Предыдущее фото"
                   >
                     <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -245,7 +247,7 @@ const DennikiPage = () => {
                   <button
                     type="button"
                     onClick={(event) => stepImage(event, 'next')}
-                    className="pointer-events-auto absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 shadow-md flex items-center justify-center hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd]"
+                    className="pointer-events-auto absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 shadow-md flex items-center justify-center hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd]"
                     aria-label="Следующее фото"
                   >
                     <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -253,6 +255,26 @@ const DennikiPage = () => {
                     </svg>
                   </button>
                 </div>
+              </div>
+
+              <div
+                className="flex gap-2 lg:order-first lg:flex-col lg:shrink-0"
+                aria-label="Фотографии денников"
+              >
+                {galleryImages.map((image, index) => (
+                  <button
+                    key={image.alt}
+                    type="button"
+                    aria-current={index === activeImage ? 'true' : undefined}
+                    aria-label={`Показать фото ${index + 1}`}
+                    onClick={() => setActiveImage(index)}
+                    className={`min-w-0 flex-1 aspect-square lg:flex-none lg:w-20 lg:h-20 rounded-lg lg:rounded-xl overflow-hidden border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd] focus-visible:ring-offset-2 ${
+                      index === activeImage ? 'border-[#0062dd]' : 'border-gray-200 hover:border-gray-400'
+                    }`}
+                  >
+                    <img src={image.src} alt="" className="w-full h-full object-cover" />
+                  </button>
+                ))}
               </div>
             </motion.div>
 
