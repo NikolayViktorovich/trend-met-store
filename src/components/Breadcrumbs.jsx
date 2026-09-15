@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const Breadcrumbs = ({ items }) => (
-  <nav className="py-4">
+  <nav className="py-4" aria-label="Хлебные крошки">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol className="flex items-center gap-2 text-sm">
         {items.map((item, i) => (
@@ -16,7 +16,7 @@ const Breadcrumbs = ({ items }) => (
                 {item.label}
               </Link>
             ) : (
-              <span className="text-[#0062dd] font-semibold">{item.label}</span>
+              <span className="text-[#0062dd] font-semibold" aria-current="page">{item.label}</span>
             )}
           </li>
         ))}

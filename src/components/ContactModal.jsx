@@ -92,7 +92,7 @@ const ContactModal = ({ isOpen, onClose }) => {
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
 
         <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8">
-          <button onClick={onClose} className="absolute top-4 right-4 text-gray-900 hover:text-gray-700 transition-colors">
+          <button type="button" onClick={onClose} className="absolute top-4 right-4 text-gray-900 hover:text-gray-700 transition-colors" aria-label="Закрыть">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
             </svg>

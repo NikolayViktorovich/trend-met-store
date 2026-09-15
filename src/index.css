@@ -57,3 +57,120 @@ body {
 
 .animate-slide-in { animation: slide-in 0.3s ease-out; }
 
+@keyframes denniki-indeterminate {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(320%); }
+}
+
+.denniki-indeterminate {
+  animation: denniki-indeterminate 1.1s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .denniki-indeterminate {
+    animation: none;
+    width: 100%;
+    transform: none;
+  }
+}
+
+.denniki-player video {
+  image-orientation: none;
+}
+
+.denniki-progress {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 16px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.denniki-progress::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #0062dd var(--progress, 0%),
+    rgb(255 255 255 / 0.28) var(--progress, 0%)
+  );
+}
+
+.denniki-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -4px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.denniki-progress::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.28);
+}
+
+.denniki-progress::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: #0062dd;
+}
+
+.denniki-progress::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.denniki-player-stage {
+  position: absolute;
+  inset: 0;
+}
+
+.denniki-player:fullscreen,
+.denniki-player:-webkit-full-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+  outline: none;
+  overflow: hidden;
+  background: #000;
+}
+
+.denniki-player:fullscreen::backdrop,
+.denniki-player:-webkit-full-screen::backdrop {
+  background: #000;
+}
+
+.denniki-player:fullscreen .denniki-player-stage,
+.denniki-player:-webkit-full-screen .denniki-player-stage {
+  position: relative;
+  inset: auto;
+  flex: none;
+  width: min(100%, calc(100vh * 9 / 16));
+  height: min(100%, calc(100vw * 16 / 9));
+  width: min(100%, calc(100dvh * 9 / 16));
+  height: min(100%, calc(100dvw * 16 / 9));
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #000;
+}
+
+.denniki-player:fullscreen video,
+.denniki-player:-webkit-full-screen video {
+  object-fit: contain;
+  transform: none;
+}
+

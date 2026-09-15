@@ -5,7 +5,8 @@ import ContactModal from './ContactModal'
 
 const navLinks = [
   { href: '/about', label: 'О компании', isRoute: true },
-  { href: '/metal-constructions', label: 'Металлоконструкции', isRoute: true }
+  { href: '/metal-constructions', label: 'Металлоконструкции', isRoute: true },
+  { href: '/denniki', label: 'Денники', isRoute: true }
 ]
 
 const craneLinks = [
@@ -42,6 +43,7 @@ const Header = () => {
               </div>
 
               <button 
+                type="button"
                 onClick={() => setIsModalOpen(true)} 
                 className="hidden lg:inline-flex bg-[#0062dd] text-white px-6 py-2.5 rounded-full hover:bg-[#0052bb] transition-colors font-medium text-sm whitespace-nowrap items-center justify-center"
               >
@@ -49,8 +51,11 @@ const Header = () => {
               </button>
 
               <button 
+                type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="lg:hidden p-2 text-gray-700 hover:text-gray-900 flex items-center justify-center"
+                aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+                aria-expanded={isMobileMenuOpen}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {isMobileMenuOpen ? (
@@ -63,7 +68,7 @@ const Header = () => {
             </div>
           </div>
 
-          <nav className="hidden lg:flex items-center justify-center gap-16 py-3">
+          <nav className="hidden lg:flex items-center justify-center gap-10 xl:gap-16 py-3">
             {navLinks.map(link => link.isRoute ? (
               <Link key={link.href} to={link.href} className="text-gray-900 hover:text-gray-700 transition-colors text-base">{link.label}</Link>
             ) : (
@@ -181,6 +186,7 @@ const Header = () => {
                     <Link to="/painted-steel" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Окрашенная сталь нержавеющая</Link>
                     <Link to="/galvanized-steel" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Сталь оцинкованная с полимерным покрытием</Link>
                     <Link to="/production" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Продукция собств. про-ва</Link>
+                    <Link to="/denniki" onClick={closeMobileMenu} className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-sm">Денники</Link>
                   </div>
                 )}
               </div>

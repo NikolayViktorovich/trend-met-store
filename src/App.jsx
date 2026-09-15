@@ -15,6 +15,7 @@ import PaintedSteelPage from './pages/PaintedSteelPage'
 import DecorativeSteelPage from './pages/DecorativeSteelPage'
 import GalvanizedSteelPage from './pages/GalvanizedSteelPage'
 import MetalConstructionsPage from './pages/MetalConstructionsPage'
+import DennikiPage from './pages/DennikiPage'
 
 const App = () => {
   const scrollRef = useRef(null)
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="/decorative-steel" element={<DecorativeSteelPage />} />
           <Route path="/galvanized-steel" element={<GalvanizedSteelPage />} />
           <Route path="/metal-constructions" element={<MetalConstructionsPage />} />
+          <Route path="/denniki" element={<DennikiPage />} />
         </Routes>
         <Footer />
       </div>

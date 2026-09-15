@@ -38,6 +38,9 @@ const CatalogMenu = ({ isDark = false }) => {
         <Link to="/production" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
           Продукция собств. про-ва
         </Link>
+        <Link to="/denniki" className={`block py-1.5 lg:py-2 ${subTextClass} ${hoverClass} transition-colors text-xs lg:text-sm`}>
+          Денники
+        </Link>
       </div>
     </div>
   )

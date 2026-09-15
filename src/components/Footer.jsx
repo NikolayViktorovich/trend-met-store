@@ -27,7 +27,7 @@ const Footer = () => {
             <h3 className="font-semibold mb-3 sm:mb-4 text-sm">Навигация</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">Главная</a>
+                <Link to="/" className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">Главная</Link>
               </li>
               <li className="relative group">
                 <button 
@@ -67,9 +67,12 @@ const Footer = () => {
                       <Link to="/galvanized-steel" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
                         Сталь оцинкованная с полимерным покрытием
                       </Link>
-                      <a href="#own-production" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                      <Link to="/production" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
                         Продукция собств. про-ва
-                      </a>
+                      </Link>
+                      <Link to="/denniki" className="block py-1.5 text-gray-400 hover:text-[#0062dd] transition-colors text-xs">
+                        Денники
+                      </Link>
                     </div>
                   </div>
                 )}
