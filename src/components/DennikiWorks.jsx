@@ -32,11 +32,10 @@ const isFullscreenNode = (node) => {
   return Boolean(active && (active === node || node?.contains(active) || active.contains?.(node)))
 }
 
-const roundBtn =
-  'flex items-center justify-center rounded-full transition-colors duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
-const playBtn = `${roundBtn} w-10 h-10 bg-white text-gray-900 hover:bg-gray-100`
-const iconBtn = `${roundBtn} w-9 h-9 bg-white/15 text-white hover:bg-white/25`
-const navBtn = `${roundBtn} w-10 h-10 bg-white text-gray-900 hover:bg-gray-100`
+const ctrlBtn =
+  'flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white/90 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40'
+const navBtn =
+  'flex h-9 w-9 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40'
 
 const DennikiWorks = ({ inactive = false }) => {
   const videoRef = useRef(null)
@@ -410,7 +409,7 @@ const DennikiWorks = ({ inactive = false }) => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-        className="text-2xl sm:text-3xl font-bold text-gray-900"
+        className="text-2xl sm:text-3xl font-bold text-white"
       >
         Наши работы
       </motion.h2>
@@ -426,8 +425,8 @@ const DennikiWorks = ({ inactive = false }) => {
                 aria-label={`Видео ${itemIndex + 1} из ${count}`}
                 aria-current={active ? 'true' : undefined}
                 onClick={() => goTo(itemIndex, { autoplay: hasStarted })}
-                className={`h-2 rounded-full transition-[width,background-color] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd] focus-visible:ring-offset-2 ${
-                  active ? 'w-7 bg-[#0062dd]' : 'w-2 bg-gray-300 hover:bg-gray-400'
+                className={`h-2 rounded-full transition-[width,background-color] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 ${
+                  active ? 'w-7 bg-[#0062dd]' : 'w-2 bg-gray-600 hover:bg-gray-500'
                 }`}
               />
             )
@@ -439,7 +438,7 @@ const DennikiWorks = ({ inactive = false }) => {
         ref={frameRef}
         tabIndex={0}
         onKeyDown={onPlayerKeyDown}
-        className="denniki-player relative mx-auto w-full max-w-[22rem] sm:max-w-[24rem] aspect-9/16 rounded-2xl overflow-hidden bg-gray-900 outline outline-1 outline-black/10 -outline-offset-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd] focus-visible:ring-offset-2"
+        className="denniki-player relative mx-auto w-full max-w-[22rem] sm:max-w-[24rem] aspect-9/16 rounded-2xl overflow-hidden bg-gray-900 outline outline-1 outline-white/10 -outline-offset-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0062dd] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
         aria-label={`Видео ${index + 1} из ${count}`}
       >
         <div className="denniki-player-stage">
@@ -452,33 +451,20 @@ const DennikiWorks = ({ inactive = false }) => {
         />
 
         {isWaiting && (
-          <div className="absolute top-0 left-0 right-0 h-0.5 overflow-hidden bg-white/20 z-20" aria-hidden="true">
-            <div className="denniki-indeterminate h-full w-1/3 bg-[#0062dd]" />
+          <div className="absolute top-0 left-0 right-0 h-px overflow-hidden bg-white/15 z-20" aria-hidden="true">
+            <div className="denniki-indeterminate h-full w-1/3 bg-white/70" />
           </div>
         )}
 
-        {!hasStarted && (
+        {(!hasStarted || !isPlaying) && (
           <button
             type="button"
             onClick={playWithSound}
-            className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 focus-visible:outline-none"
-            aria-label={`Смотреть видео ${index + 1}`}
+            className={`absolute inset-0 z-20 flex items-center justify-center focus-visible:outline-none ${!hasStarted ? 'bg-black/20' : ''}`}
+            aria-label={hasStarted ? 'Продолжить воспроизведение' : `Смотреть видео ${index + 1}`}
           >
-            <span className={`${playBtn} w-14 h-14`}>
-              <Play className="translate-x-px" size={26} fill="currentColor" strokeWidth={0} />
-            </span>
-          </button>
-        )}
-
-        {hasStarted && !isPlaying && (
-          <button
-            type="button"
-            onClick={playWithSound}
-            className="absolute inset-0 z-20 flex items-center justify-center focus-visible:outline-none"
-            aria-label="Продолжить воспроизведение"
-          >
-            <span className={`${playBtn} w-14 h-14`}>
-              <Play className="translate-x-px" size={26} fill="currentColor" strokeWidth={0} />
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm">
+              <Play className="translate-x-px" size={22} fill="currentColor" strokeWidth={0} />
             </span>
           </button>
         )}
@@ -491,10 +477,10 @@ const DennikiWorks = ({ inactive = false }) => {
                 event.stopPropagation()
                 goTo(index - 1, { autoplay: hasStarted })
               }}
-              className={`${navBtn} absolute left-3 top-1/2 z-30 -translate-y-1/2`}
+              className={`${navBtn} absolute left-2.5 top-1/2 z-30 -translate-y-1/2`}
               aria-label="Предыдущее видео"
             >
-              <ChevronLeft size={22} strokeWidth={2} />
+              <ChevronLeft size={20} strokeWidth={2} />
             </button>
             <button
               type="button"
@@ -502,55 +488,53 @@ const DennikiWorks = ({ inactive = false }) => {
                 event.stopPropagation()
                 goTo(index + 1, { autoplay: hasStarted })
               }}
-              className={`${navBtn} absolute right-3 top-1/2 z-30 -translate-y-1/2`}
+              className={`${navBtn} absolute right-2.5 top-1/2 z-30 -translate-y-1/2`}
               aria-label="Следующее видео"
             >
-              <ChevronRight size={22} strokeWidth={2} />
+              <ChevronRight size={20} strokeWidth={2} />
             </button>
           </>
         )}
 
-        <div className="absolute inset-x-0 bottom-0 z-30 p-3">
-          <div className="rounded-2xl bg-black/80 px-3 pt-3 pb-2.5">
-            <label className="block mb-2.5" htmlFor="denniki-video-progress">
-              <span className="sr-only">Положение видео</span>
-              <input
-                id="denniki-video-progress"
-                ref={progressRef}
-                type="range"
-                min="0"
-                max="1000"
-                defaultValue="0"
-                onInput={seek}
-                className="denniki-progress"
-              />
-            </label>
-            <div className="flex items-center gap-1.5 text-white">
-              <button type="button" onClick={togglePlay} className={playBtn} aria-label={isPlaying ? 'Пауза' : 'Воспроизведение'}>
-                {isPlaying ? (
-                  <Pause size={18} fill="currentColor" strokeWidth={0} />
-                ) : (
-                  <Play className="translate-x-px" size={18} fill="currentColor" strokeWidth={0} />
-                )}
-              </button>
-              {index === 0 && (
-              <button type="button" onClick={toggleMute} className={iconBtn} aria-label={muted ? 'Включить звук' : 'Выключить звук'}>
-                {muted ? <VolumeX size={18} strokeWidth={2} /> : <Volume2 size={18} strokeWidth={2} />}
-              </button>
+        <div className="absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-3 pb-3 pt-10">
+          <label className="block" htmlFor="denniki-video-progress">
+            <span className="sr-only">Положение видео</span>
+            <input
+              id="denniki-video-progress"
+              ref={progressRef}
+              type="range"
+              min="0"
+              max="1000"
+              defaultValue="0"
+              onInput={seek}
+              className="denniki-progress"
+            />
+          </label>
+          <div className="mt-2 flex items-center gap-1 text-white">
+            <button type="button" onClick={togglePlay} className={ctrlBtn} aria-label={isPlaying ? 'Пауза' : 'Воспроизведение'}>
+              {isPlaying ? (
+                <Pause size={16} fill="currentColor" strokeWidth={0} />
+              ) : (
+                <Play className="translate-x-px" size={16} fill="currentColor" strokeWidth={0} />
               )}
-              <p className="ml-auto mr-1 text-xs tabular-nums text-white/90">
-                <span ref={timeRef}>0:00</span>
-                <span className="text-white/50"> / {durationLabel}</span>
-              </p>
-              <button
-                type="button"
-                onClick={toggleFullscreen}
-                className={iconBtn}
-                aria-label={isFullscreen ? 'Выйти из полноэкранного режима' : 'Полноэкранный режим'}
-              >
-                {isFullscreen ? <Minimize2 size={18} strokeWidth={2} /> : <Maximize2 size={18} strokeWidth={2} />}
+            </button>
+            {index === 0 && (
+              <button type="button" onClick={toggleMute} className={ctrlBtn} aria-label={muted ? 'Включить звук' : 'Выключить звук'}>
+                {muted ? <VolumeX size={16} strokeWidth={2} /> : <Volume2 size={16} strokeWidth={2} />}
               </button>
-            </div>
+            )}
+            <p className="ml-1 text-[11px] tabular-nums text-white/80">
+              <span ref={timeRef}>0:00</span>
+              <span className="text-white/45"> / {durationLabel}</span>
+            </p>
+            <button
+              type="button"
+              onClick={toggleFullscreen}
+              className={`${ctrlBtn} ml-auto`}
+              aria-label={isFullscreen ? 'Выйти из полноэкранного режима' : 'Полноэкранный режим'}
+            >
+              {isFullscreen ? <Minimize2 size={16} strokeWidth={2} /> : <Maximize2 size={16} strokeWidth={2} />}
+            </button>
           </div>
         </div>
         </div>

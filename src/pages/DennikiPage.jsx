@@ -417,8 +417,18 @@ const DennikiPage = () => {
         </div>
       </section>
 
-      <section className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 md:pb-20" aria-labelledby="denniki-works-heading">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 md:pb-20 bg-gray-900 relative overflow-hidden" aria-labelledby="denniki-works-heading">
+        {dennikiBgOrbs.map((orb, index) => (
+          <div
+            key={`works-${index}`}
+            aria-hidden="true"
+            className={`absolute ${orb.size} ${orb.pos} rounded-full blur-3xl glow-orb`}
+            style={{ backgroundColor: orb.color, animationDelay: orb.delay }}
+          />
+        ))}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none" aria-hidden="true" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <DennikiWorks inactive={isModalOpen || isContactOpen} />
         </div>
       </section>
